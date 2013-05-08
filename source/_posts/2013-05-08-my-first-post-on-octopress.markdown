@@ -3,7 +3,7 @@ layout: post
 title: "My first post on Octopress"
 date: 2013-05-08 19:37
 comments: true
-categories: 
+categories: testCategory 
 ---
 
 
