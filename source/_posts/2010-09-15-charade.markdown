@@ -1,0 +1,39 @@
+---
+layout: post
+published: true
+title: Charade
+author_login: picsoung
+author_email: nicolas.grenie@utbm.fr
+dotclear_id: 57
+date: 2010-09-15 08:06:00.000000000 +02:00
+categories:
+- Blablas
+tags: []
+comments:
+- id: 7
+  author: valeuf
+  author_email: valeuf@gmail.com
+  author_url: http://korea.valeuf.org/
+  date: 09/15/2010 13:15:49
+  date_gmt: 2010-09-15 13:15:49.000000000 +02:00
+  content: <p>procrastiner ?</p>
+---
+<p><img src="http://www.futura-sciences.com/comprendre/d/images/575/klein_01.jpg" alt="" /></p>
+
+
+<p>Mon premier n'est pas amateur</p>
+
+
+<p>Mon second est salle comme Mimi</p>
+
+
+<p>Mon troisième est l'énergie intérieur qui nous anime (d'après les chinois)</p>
+
+
+<p>Mon dernier est gros chez Cyrano</p>
+
+
+<p>Mon tout est mon verbe préféré...</p>
+
+
+<p>Réponse dans le prochain billet avec si possible des choses plus intéressantes à raconter :)</p>

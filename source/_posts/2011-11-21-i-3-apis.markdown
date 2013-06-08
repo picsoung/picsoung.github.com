@@ -1,0 +1,84 @@
+---
+layout: post
+published: true
+title: I <3 APIs!
+author_login: picsoung
+author_email: nicolas.grenie@utbm.fr
+dotclear_id: 189
+date: 2011-11-21 03:25:00.000000000 +01:00
+categories:
+- In the Valley
+tags: []
+comments: []
+---
+<p><img src="/public/illus_billets/.api1_s.jpg" alt="api1.gif" style="display:block; margin:0 auto;" title="api1.gif, déc. 2011" /></p>
+
+
+<p>Give me an A ! Give me a P ! Give me an I ! API power !!</p>
+
+
+<p>If that sounds like a cheerleader's song, it's totally on purpose. "API" is the new buzzworld in the tech world, with lot of fans and gurus. And you better join them now, if you don't want to be left behind.</p>
+
+
+<h2>What is an API ?</h2>
+
+
+<p>API stands for "<a href="http://en.wikipedia.org/wiki/API" hreflang="en" title="API">Application programming interface</a>" which means in a more understandable English : A hook to access a company's data/website/technology and use it in your own application.
+A good way to not re-invent the wheel and to sync up with other services.</p>
+
+
+<h2>Who provide APIs?</h2>
+
+
+<p>As a website you want to have as much user as you can because users means business and money (not only, we agree :P) . If you have an API you will let others create their own applications on top of yours based on the datas you are willing to share.</p>
+
+
+<p>For example you can use Facebook Connect platform and let your users authenticate themself throw they Facebook identity. On your side it is simpler, you get all the data directly from Facebook, no more boring form asking basic informations. From a user perspective it also easier and very smooth, one account to rule them all.</p>
+
+
+<h2>Big players on API :</h2>
+
+
+<p><a href="http://developers.facebook.com" hreflang="en" title="Facebook">Facebook</a></p>
+
+
+<p><a href="http://dev.twitter.com" hreflang="en" title="Twitter">Twitter</a></p>
+
+
+<p>Google Map</p>
+
+
+<p>Youtube</p>
+
+
+<p>Linkedin</p>
+
+
+<p><a href="http://developer.klout.com/" hreflang="en" title="Klout">Klout</a>
+...</p>
+
+
+<h2>Why APIs are that big ?</h2>
+
+
+<p>Nowadays you could not think about creating an innovative startup without using somebody's else API. As we said before you do not need to re-invent the wheel, somebody else did it before you. It saves you time, money and let you focus on bigger challenges.</p>
+
+
+<p>You need a video-chat system ? use <a href="www.tokbox.com/opentok/api" hreflang="en" title="OpenTok">OpenTok</a>. You need to send SMS ? use <a href="http://twilio.com" hreflang="en" title="Twilio.com">Twilio</a>. And so on... It no more "there is an app for that" but "<strong>there is an API for that</strong>".</p>
+
+
+<p>APIs are a good way to share/sell your technology and your data with others and make revenues out of it.</p>
+
+
+<h2>How to find the right API ?</h2>
+
+
+<p>With this growing market there is a lot of places to find the API that meets your needs. You check APIs providers like <a href="http://mashery.com" hreflang="en" title="Mashery">Mashery</a> or <a href="http://www.3scale.net" hreflang="en" title="3Scale">3Scale</a>, they help companies to maintain their API documention and servers.
+There are also API directories like <a href="http://programmableweb.com" hreflang="en" title="ProgrammableWeb.com">ProgrammableWeb</a> or <a href="http://www.mashape.com/" hreflang="en" title="Mashape">Mashape</a>. There is alo <a href="www.apigee" hreflang="en" title="Apigee">Apigee</a> where you can debug APIs in a console.</p>
+
+
+<p>Now that you know a bit more about APIs, it's time to code ;)</p>
+
+
+<p>Go to hackathons and meet engineers that are building those awesome stuff.
+<img src="http://tctechcrunch2011.files.wordpress.com/2011/12/facebook-college-hackathon-done.png?w=300" alt="" /></p>

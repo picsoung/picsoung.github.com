@@ -3,8 +3,8 @@
 # ----------------------- #
 
 url: http://picsoung.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
+title: Hack and frogs
+subtitle: stories from a frog eater in the tech world
 author: Nicolas Grenié
 simple_search: http://google.com/search
 description: G33k, frogs and snails ! Nicolas Grenié personal blog
@@ -97,4 +97,4 @@ disqus_show_comment_count: true
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: false
+facebook_like: true

@@ -1,0 +1,59 @@
+---
+layout: post
+published: true
+title: We Are l'Europe
+author_login: picsoung
+author_email: nicolas.grenie@utbm.fr
+dotclear_id: 42
+date: 2009-12-08 00:37:00.000000000 +01:00
+categories:
+- Culture
+tags: []
+comments: []
+---
+<p>Après être allé voir ce spectacle il y a un mois au théâtre Granit de Belfort en avant première mondiale, je partage mon sentiment sur cette pièce qui transporte, À ne pas rater c'est sûr&nbsp;!</p>
+
+
+<p><a href="/public/illus_billets/we_are_l_europe.jpg"><img src="/public/illus_billets/we_are_l_europe.jpg" alt="weareleurope" style="float:left; margin: 0 1em 1em 0;" title="weareleurope, déc. 2009" /></a>D’un pas déterminé, elle rentre sur le plateau et s’assoit. Le silence se fait dans l’auditoire. Ca commence. Plongée dans la lecture de son livre elle se triture les cheveux quand rentre sur le plateau un jeune homme au pas déterminé, lui aussi. Leur premier échange est à propos d’un certain «&nbsp;Manu », qui n’est pas là. La discussion s’enchaîne alors sur leurs visions du monde tandis qu’il prépare le café. La pièce est aseptisée, des grands murs pour la délimiter, des néons blancs au plafond, nous sommes dans l’open-space moderne dans lequel est enfermée la société dont ils dissertent.</p>
+
+
+<p>Et un à un, les six personnages entrent sur scène, toujours à la recherche de «&nbsp;Manu ». Ils s’insèrent dans la première discussion pour y ajouter leurs grains de sel et décrire leur vie. Comment ils «&nbsp;vivent », qu’est-ce qui les maintient debout et les fais avancer. Parmi tous un homme est conspué pour vivre et se sentir vivre à travers sa passion pour le roller. Il se «&nbsp;sent&nbsp;» dans le «&nbsp;fiou fiou&nbsp;» des roues sur l’asphalte là où les autres ne comprennent pas comment il peut s’affirmer en tant qu’être humain dans ce «&nbsp;fiou fiou&nbsp;» des rollers.</p>
+
+
+<p>Arrive enfin Manu, ce grand gaillard, des boîtes à la main. Il les jette rageusement avant d’entamer un long monologue. Pendant qu’il soliloque les autres autour de lui entament leur transformation pour devenir petit à petit des supers héros. À la fin de l’énoncé de Manu sur le pourquoi du comment il est fâché à cause d’une cuisine toute équipée, au long plan de travail, qu’il achètera avec sa femme 8 000 €, grâce aux subventions données pour la naissance de son troisième enfant, la troupe des sept super-héros s’anime et danse.</p>
+
+
+<p>Réunis tous les sept pour débattre du projet We Are l’Europe. Discuter et Remettre à plat les fondements de la société dans laquelle ils vivent pour retrouver une place «&nbsp;au petit blanc occidental&nbsp;» dans un monde mondialisé. Partant du constat qu’aujourd’hui «&nbsp;on ne bande plus&nbsp;» ils énoncent les maux qui les traversent mais que nous, spectateurs, vivons aussi, en tant que membre de cette société.</p>
+
+
+<p>C’est du concret, du réel que l’on peut toucher. Par exemple quand l’un s’interroge en se demandant «&nbsp;Qu’est-ce qui t’es arrivé aujourd’hui&nbsp;? ». Chaque énoncé est une réflexion en plus pour le spectateur qui se pose les mêmes questions à lui même, et tous ensemble nous nous demandons «&nbsp;Qu’est-ce qui m’est arrivé aujourd’hui », comme pour se rendre compte comme eux qu’il ne nous arrive rien.</p>
+
+
+<p>Et de discours en chanson ils démontent et démontrent que la vie du «&nbsp;petit blanc occidental&nbsp;» ne lui appartient plus. Que nous nous situons entre les États-Unis et la Chine et nous devenons la variable d’ajustement entre deux puissances.</p>
+
+
+<p>Tous ces sentiments mêlés à celui d’une Europe post-coloniale à la supériorité matérielle et culturelle déchue dans ce «&nbsp;monde qui part en sucette », les amenèrent tour à tour à assommer la société de consommation&nbsp;; Celle qui fait acheter un iPhone et qui nous en rend dépendant, la société spéculative qui met sur le carreau des milliers de personnes pour que d’autres s’en mettent plein les poches.</p>
+
+
+<p>C’est une satire, servie par le texte de Jean Charles Massera. Satire oui, mais qui s’annonce comme une évidence, comme des réalités auxquelles nous sommes confrontés tous les jours. En quelque sorte une fatalité à laquelle nous devons nous efforcer d’échapper pour redevenir acteur de nos vies. L’exemple à suivre est-il celui du fana de roller qui glisse sur ses roues avec un air de «&nbsp;Natural Blues&nbsp;» de Moby sorti de son iPod pour le transporter dans son expérience individualiste&nbsp;?</p>
+
+
+<p>Dans leurs différentes prises de paroles ils s’emmènent vers le projet commun We Are l’Europe, avec la même idée d’un vivre ensemble bien, sans puissance supérieure néfaste à l’accomplissement de soi.<a href="/public/illus_billets/arton27.jpg"><img src="/public/illus_billets/arton27.jpg" alt="arton27.jpg" style="float:right; margin: 0 0 1em 1em;" title="arton27.jpg, déc. 2009" /></a></p>
+
+
+<p>Et enfin après avoir pendant près de deux heures décrit le portrait morose de notre «&nbsp;monde qui part en sucette&nbsp;» ils finissent par ce dire que tout n’est pas si pourri, que l’on est pas en Birmanie, que l’on a notre confort, qu’il y a des choses qui marchent, que certaines libertés nous sont acquises.</p>
+
+
+<p>Le changement est en marche «&nbsp;et ça va bien se passer&nbsp;» pourrait être la conclusion de cette pièce qui s’achève dans l’euphorie de la complainte d’un roi déchu chantée dans «&nbsp;Viva la vida&nbsp;» de Coldplay.</p>
+
+
+<p>Les néons qui aveuglent et aseptisent le monde s’éteignent. La joie et la vie reprennent le dessus. La pièce est terminée. Le spectateur reste seul face à tout ce qu’il a vu, face à tout ce qu’il a engrangé.</p>
+
+
+<p>Pas évident de sortir un fil de la pelote, d’entamer la réflexion sur notre vie et notre place au sein du groupe, ou encore notre oisiveté face à ce qui nous entoure. L’envie qui prédomine est de vouloir faire quelque chose de ses mains. Comme un éclair de lucidité, se dire qu’ici et maintenant on peut faire quelque chose. Demain il sera trop tard notre réalité nous aura rattrapée.</p>
+
+
+<p>Après avoir vu cette pièce trois fois, entre la générale et deux autres représentations, on voit certains changements minimes dans la mise en scène, néanmoins le message ne perd pas de sa force, il touche et interpelle toujours autant. On regrette de ne pas avoir pris son calepin pour noter tous les points de questionnement et d’idée par lesquels passent les personnages. Enfermé dans cette bulle d’optimisme on se dit à la manière de Grand Corps Malade «&nbsp;ça va chermar ».</p>
+
+
+<p>Et demain se lever pour aller pointer et rêver encore du Grand Soir.</p>

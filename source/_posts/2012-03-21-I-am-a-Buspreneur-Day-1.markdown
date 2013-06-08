@@ -1,11 +1,10 @@
 ---
 layout: post
-published: false
+published: true
 title: I am a Buspreneur - Day 1
 author_login: picsoung
 author_email: nicolas.grenie@utbm.fr
 dotclear_id: 193
-dotclear_url: I-am-a-Buspreneur-Day-1
 date: 2012-03-21 07:42:00.000000000 +01:00
 categories:
 - In the Valley

@@ -1,23 +1,24 @@
---- 
+---
 layout: post
-published: false
+published: true
 title: Je networke, tu networkes, nous networkons !
 author_login: picsoung
 author_email: nicolas.grenie@utbm.fr
 dotclear_id: 178
-date: 2011-01-12 00:46:00 +01:00
-categories: 
+date: 2011-01-12 00:46:00.000000000 +01:00
+categories:
 - A year in St. Olaf/USA
 tags: []
-
-comments: 
+comments:
 - id: 17
   author: Valeuf
   author_email: valeuf@gmail.com
   author_url: http://korea.valeuf.org/
-  date: &id001 2011-01-12 07:25:39 +01:00
-  date_gmt: *id001
-  content: "<p>Un petit stage en Cor\xC3\xA9e dans des startups sur Seoul \xC3\xA7a te tente pas ? J'ai des opportunit\xC3\xA9s dans une boite qui fait un MMORPG pour les 8-14 ans, ou sinon une boite de marketing social ^ ^</p>"
+  date: 01/12/2011 07:25:39
+  date_gmt: 2011-01-12 07:25:39.000000000 +01:00
+  content: <p>Un petit stage en Corée dans des startups sur Seoul ça te tente pas
+    ? J'ai des opportunités dans une boite qui fait un MMORPG pour les 8-14 ans, ou
+    sinon une boite de marketing social ^ ^</p>
 ---
 <p><img src="/public/illus_billets/.linkedinWizard_m.jpg" alt="linkedinWizard.jpg" style="display:block; margin:0 auto;" title="linkedinWizard.jpg, janv. 2011" />
 <em>Image sous licence CC&nbsp;: <a href="http://www.flickr.com/photos/4everyoung/256180335/" hreflang="en">Originale</a></em></p>

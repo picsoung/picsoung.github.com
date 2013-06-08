@@ -1,17 +1,15 @@
---- 
+---
 layout: post
-published: false
-title: "American dream - \xC3\x94saka\xC3\xAF !"
+published: true
+title: American dream - Ôsakaï !
 author_login: picsoung
 author_email: nicolas.grenie@utbm.fr
 dotclear_id: 176
-date: 2010-12-03 06:59:00 +01:00
-categories: 
+date: 2010-12-03 06:59:00.000000000 +01:00
+categories:
 - A year in St. Olaf/USA
 tags: []
-
 comments: []
-
 ---
 <p>Enfin ! Je lâche un grand OUF de soulagement ! Le feu dans la cheminée est enfin allumé ! Je sais c'est puéril, mais chacun ses petites victoires. Grâce à cela au moment d'aller me coucher quand je ferais le bilan de ma journée je ressentirais une petite satisfaction tel le nolife qui vient d'accomplir une quête.</p>
 

@@ -1,23 +1,22 @@
---- 
+---
 layout: post
-published: false
-title: "Les Colons de l'UTBoh\xC3\xA8Me"
+published: true
+title: Les Colons de l'UTBohèMe
 author_login: picsoung
 author_email: nicolas.grenie@utbm.fr
 dotclear_id: 45
-date: 2010-06-16 20:50:00 +03:00
-categories: 
+date: 2010-06-16 20:50:00.000000000 +02:00
+categories:
 - UTBM
 tags: []
-
-comments: 
+comments:
 - id: 2
-  author: "Tin\xC3\xA9"
+  author: Tiné
   author_email: zetartopom@gmail.com
-  author_url: ""
+  author_url: ''
   date: 06/16/2010 22:35:30
-  date_gmt: 2010-06-16 22:35:30 +03:00
-  content: "<p>Ahhh, oukil\xC3\xA9 l'applet ? :)</p>"
+  date_gmt: 2010-06-16 22:35:30.000000000 +02:00
+  content: <p>Ahhh, oukilé l'applet ? :)</p>
 ---
 <p>Faut avouer que ça sonne un peu bizarre comme nom pour un projet de cours. Il vient tout droit de l’imagination deux doctorants et du responsable de l’UV, des gens que l’on pourrait surnommer «&nbsp;Trolls ». Ce terme signifiant de par chez nous un individu féru de jeux de rôles et de jeu de plateau. C’est donc naturellement que le projet du semestre tourne autour de l’adaptation du célèbre jeu allemand «&nbsp;Les colons de Catane ».</p>
 

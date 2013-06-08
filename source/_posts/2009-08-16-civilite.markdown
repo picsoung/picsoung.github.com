@@ -1,0 +1,18 @@
+---
+layout: post
+published: true
+title: Civilité
+author_login: picsoung
+author_email: nicolas.grenie@utbm.fr
+dotclear_id: 25
+date: 2009-08-16 20:30:00.000000000 +02:00
+categories:
+- Canada 2009
+tags: []
+comments: []
+---
+<p><a href="/public/illus_billets/RonaldMcDonald.jpg"><img src="/public/illus_billets/.RonaldMcDonald_t.jpg" alt="L" /></a>Alors que je rentrais hier soir j’ai remarqué un comportement que l’on peut qualifier d’étrange. Je ne sais pas si c’était du à la nuit et l’heure tardive mais toutes les personnes que j’ai rencontré m’ont salué.
+Le genre de truc pour dire «Moi je suis clean, et toi ?» ceux à quoi il faut répondre «Moi aussi» d’un signe de la tête.
+J’ai pas compris ça tout de suite, si bien que lorsqu’un groupe de jeune a agité sa main de l’autre côté de la rue je ne l’ai pa pris pour moi. Avant qu’il insiste plusieurs fois en ma direction.
+Lorsque je lui répondus j’ai pu voir un grand sourire sur son visage genre «le noob a compris comment ca marchais».
+Depuis je salue à chaque fois quand je croise une personne seule à pied à contresens...</p>

@@ -1,23 +1,24 @@
---- 
+---
 layout: post
-published: false
+published: true
 title: Immersion in DC's tech scene
 author_login: picsoung
 author_email: nicolas.grenie@utbm.fr
 dotclear_id: 181
-date: 2011-02-08 03:49:00 +01:00
-categories: 
+date: 2011-02-08 03:49:00.000000000 +01:00
+categories:
 - A year in St. Olaf/USA
 tags: []
-
-comments: 
+comments:
 - id: 18
   author: Jen
   author_email: Jen@techcocktail.com
   author_url: http://techcocktail.com
   date: 02/21/2011 18:47:07
-  date_gmt: 2011-02-21 18:47:07 +01:00
-  content: <p>Thank you so much for coming to our event and writing about. It was a pleasure to meet you! Enjoy the rest of the school year and perhaps our paths will cross again.</p>
+  date_gmt: 2011-02-21 18:47:07.000000000 +01:00
+  content: <p>Thank you so much for coming to our event and writing about. It was
+    a pleasure to meet you! Enjoy the rest of the school year and perhaps our paths
+    will cross again.</p>
 ---
 <p><img src="http://techcocktail.wpengine.netdna-cdn.com/wp-content/themes/thesis_17/custom/images/tc.gif" alt="" /></p>
 
