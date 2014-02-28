@@ -4,7 +4,7 @@
   <title><![CDATA[Hack and frogs]]></title>
   <link href="http://picsoung.github.io/atom.xml" rel="self"/>
   <link href="http://picsoung.github.io/"/>
-  <updated>2013-06-09T23:05:57+02:00</updated>
+  <updated>2014-02-27T21:48:16-08:00</updated>
   <id>http://picsoung.github.io/</id>
   <author>
     <name><![CDATA[Nicolas Grenié]]></name>
@@ -14,10 +14,54 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Webfaction To Host Your App]]></title>
+    <link href="http://picsoung.github.io/blog/2014/02/27/webfaction-to-host-your-app/"/>
+    <updated>2014-02-27T00:00:00-08:00</updated>
+    <id>http://picsoung.github.io/blog/2014/02/27/webfaction-to-host-your-app</id>
+    <content type="html"><![CDATA[<h1>Think about WebFaction to host your site/app</h1>
+
+<p>Webhosting to be a giant mess with thousands of actors 10 years ago, you would have spend hours to find the perfect hosting company. If you did not want to go to the big guys like 1&amp;1 or OVH and pay a three-figures bill to have basic features you really had few options…</p>
+
+<p>Now, it&rsquo;s over, hosting is cool again with a lot of new players in the game. I just found a new one that I have not heard of before and it look legit.</p>
+
+<p>To be honest, I really did not take care of my personal hosting for the last years. Once I found a deal to get unlimited hosting for $50/year, on pronethosting, everything worked fine. At that time I only needed PHP and MySQL with FTP access to run my blog. Then they got acquired by another hosting company CoolHandle, and increased their price, to $100 a year. It was still fine with me. But recently I had couple of problem (DNS changes without notice, access to dashboard,…). After 5 years, I am ready to move and find a professional company to host my site for a decent price.</p>
+
+<p>WebFaction seems to be ideal for that.</p>
+
+<h2>Who is WebFaction</h2>
+
+<p>The worst you want to do with your code is to give it to an untrust person. WebFaction was created in 2003 under the name python-hosting.com, they used to host only Python applications and got quite popular in the community. They were hosting thousands of open-source python projects, and years after years kept improving their offer. They added SVN repo hosting, Django support and many other stuff.</p>
+
+<p>Python-hosting is now WebFaction and they claim to host 250 000 apps, with datacenters in US, Europe and Asia. Ruby and PHP apps can now be hosted on their platform.
+Everything cool could be done there :)</p>
+
+<h2>For Developers by Developers</h2>
+
+<p>Developers tend to wish to have control of their machine. And WebFaction team totally understood that, they come from the same world as their customers.</p>
+
+<p>I used to be super lazy, and scared of SSH. At that time, I would have had prefered FTP with a visual interface over SSH in a shell. I found myself safe whenever I had to deal with cPanel dashboard instead of configuring manually each services…</p>
+
+<p>Now, that I gained experience in development and ops, I definitively prefer to have control on machines.</p>
+
+<p>WebFaction suits definitively this need. If you deal with cloud computing on everyday job you won&rsquo;t be lost, you are surrounded by a environement you already know. It&rsquo;s one of the best shared hosting provider with the last up-to-date software.</p>
+
+<p>Their simple dashboard lets you setup the high-level features to manage emails, domains or databases. The rest could be done directly in a shell on a SSH session. You are the master onboard.
+And for only $8.50 a month, that&rsquo;s the best you could expect ! Even cheaper than Amazon EC2 or Heroku !</p>
+
+<p>Unfortunately I could not quit my actual hoster, until this summer. But I will definitively start my future projects on WebFaction.</p>
+
+<p>If you are not confident paying without testing they even have a trial tier.</p>
+
+<p>I am looking for hearing from your experience using WebFaction.
+Happy Coding !</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[I am a Buspreneur - Day 1]]></title>
-    <link href="http://picsoung.github.io/blog/2012/03/21/i-am-a-buspreneur-day-1/"/>
-    <updated>2012-03-21T07:42:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2012/03/21/i-am-a-buspreneur-day-1</id>
+    <link href="http://picsoung.github.io/blog/2012/03/20/i-am-a-buspreneur-day-1/"/>
+    <updated>2012-03-20T23:42:00-07:00</updated>
+    <id>http://picsoung.github.io/blog/2012/03/20/i-am-a-buspreneur-day-1</id>
     <content type="html"><![CDATA[<p>WoW! Just wow ! i just get back from the crazy SXSW, or for those who don&#8217;t know: &#8220;the Las Vegas of startup world&#8221;. It&#8217;s been an amazing experience from Day 1 till the end. I can&#8217;t wait to tell you about what happened ;)</p>
 
 
@@ -131,7 +175,7 @@ Kinetic.ly - Tools for motion analysis</p>
   <entry>
     <title type="html"><![CDATA[I am on a Bus!]]></title>
     <link href="http://picsoung.github.io/blog/2012/03/06/i-am-on-a-bus/"/>
-    <updated>2012-03-06T10:00:00+01:00</updated>
+    <updated>2012-03-06T01:00:00-08:00</updated>
     <id>http://picsoung.github.io/blog/2012/03/06/i-am-on-a-bus</id>
     <content type="html"><![CDATA[<p><img src="http://50.56.192.33/wp-content/uploads/2012/03/silicon_valley_bus_s.png" alt="" /></p>
 
@@ -245,9 +289,9 @@ I just know the basic elevator pitch about the <a href="http://StartupBus.com" h
   
   <entry>
     <title type="html"><![CDATA[How to create a startup webpage in less than 1 hour - part 2]]></title>
-    <link href="http://picsoung.github.io/blog/2012/02/04/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2/"/>
-    <updated>2012-02-04T01:47:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2012/02/04/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2</id>
+    <link href="http://picsoung.github.io/blog/2012/02/03/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2/"/>
+    <updated>2012-02-03T16:47:00-08:00</updated>
+    <id>http://picsoung.github.io/blog/2012/02/03/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2</id>
     <content type="html"><![CDATA[<p>Last weekend I attended my 3rd Startup Weekend but this time I was part of the facilitators. This one was focused on Mobile and was held at the AT&amp;T Foundry (awesome building !!).</p>
 
 
@@ -309,9 +353,9 @@ You can find the first part of the article about which tools we are going to use
   
   <entry>
     <title type="html"><![CDATA[I <3 APIs!]]></title>
-    <link href="http://picsoung.github.io/blog/2011/11/21/i-3-apis/"/>
-    <updated>2011-11-21T03:25:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2011/11/21/i-3-apis</id>
+    <link href="http://picsoung.github.io/blog/2011/11/20/i-3-apis/"/>
+    <updated>2011-11-20T18:25:00-08:00</updated>
+    <id>http://picsoung.github.io/blog/2011/11/20/i-3-apis</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/.api1_s.jpg" alt="api1.gif" style="display:block; margin:0 auto;" title="api1.gif, déc. 2011" /></p>
 
 
@@ -433,9 +477,9 @@ There are also API directories like <a href="http://programmableweb.com" hreflan
   
   <entry>
     <title type="html"><![CDATA[Disable comment box on Facebook like button]]></title>
-    <link href="http://picsoung.github.io/blog/2011/10/31/disable-comment-box-on-facebook-like-button/"/>
-    <updated>2011-10-31T02:14:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2011/10/31/disable-comment-box-on-facebook-like-button</id>
+    <link href="http://picsoung.github.io/blog/2011/10/30/disable-comment-box-on-facebook-like-button/"/>
+    <updated>2011-10-30T18:14:00-07:00</updated>
+    <id>http://picsoung.github.io/blog/2011/10/30/disable-comment-box-on-facebook-like-button</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/1-Facebook.png" alt="1-Facebook.png" title="1-Facebook.png, oct. 2011" /></p>
 
 
@@ -491,9 +535,9 @@ Have fun &#8220;hacking&#8221; Facebook :)</p>
   
   <entry>
     <title type="html"><![CDATA[In Hackathon we trust]]></title>
-    <link href="http://picsoung.github.io/blog/2011/08/29/in-hackathon-we-trust/"/>
-    <updated>2011-08-29T05:26:00+02:00</updated>
-    <id>http://picsoung.github.io/blog/2011/08/29/in-hackathon-we-trust</id>
+    <link href="http://picsoung.github.io/blog/2011/08/28/in-hackathon-we-trust/"/>
+    <updated>2011-08-28T20:26:00-07:00</updated>
+    <id>http://picsoung.github.io/blog/2011/08/28/in-hackathon-we-trust</id>
     <content type="html"><![CDATA[<p>Spread the word : Geeks are not living in caves anymore !! Or at least they going out from their caves to see the sunlight once in a while for a specific occasion. Something in between a computer science class, a LAN party, a crazy scientist lab and a networking event.</p>
 
 
@@ -647,9 +691,9 @@ People are coming to work on their projects or to build new stuff during the eve
   
   <entry>
     <title type="html"><![CDATA[Students, 3 reasons why you should attend Web 2.0 Expo NYC in fall (65% discount)]]></title>
-    <link href="http://picsoung.github.io/blog/2011/08/19/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/"/>
-    <updated>2011-08-19T08:11:00+02:00</updated>
-    <id>http://picsoung.github.io/blog/2011/08/19/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount</id>
+    <link href="http://picsoung.github.io/blog/2011/08/18/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/"/>
+    <updated>2011-08-18T23:11:00-07:00</updated>
+    <id>http://picsoung.github.io/blog/2011/08/18/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount</id>
     <content type="html"><![CDATA[<p><img src="http://blonville.unblog.fr/files/2007/09/master.gif" alt="" />
 I came to San Francisco for the first time last Christmas with my family for Christmas break. We did a lot of tourist stuff, but being in family of professors interested by technology, science and programming, you cannot avoid the &#8220;Tech tour&#8221; of the Bay. So we visited downtown Palo Alto, Stanford University, Berkeley and San Francisco SOMA&#8230;</p>
 
@@ -777,7 +821,7 @@ And I bet NYC is a nice city too, even if I never been&#8230;</p>
   <entry>
     <title type="html"><![CDATA[Année à St. Olaf - Le Bilan - Par quoi commencer ?]]></title>
     <link href="http://picsoung.github.io/blog/2011/06/02/annee-a-st-olaf-le-bilan-par-quoi-commencer/"/>
-    <updated>2011-06-02T23:56:00+02:00</updated>
+    <updated>2011-06-02T14:56:00-07:00</updated>
     <id>http://picsoung.github.io/blog/2011/06/02/annee-a-st-olaf-le-bilan-par-quoi-commencer</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/stolaf/.lion-black_t.jpg" alt="lion-black.jpg" style="float:left; margin: 0 1em 1em 0;" title="lion-black.jpg, juin 2011" />Presqu&#8217;un an après avoir quitté l&#8217;Hexagone me voici de retour dans nos contrées. Du poisson, du fromage et du soleil enfin&nbsp;! Mais non sans mal, car il a fallu dire au revoir au campus de St. Olaf et à tous ceux qui ont fait de cette aventure quelque chose de magique. Aujourd&#8217;hui le temps est venu d&#8217;essayer de démêler les fils de la pelote de cette année passée aux États-Unis et de sortir de l&#8217;inconscient ce qui a pu changer en moi et qui a fait de cette extraordinaire année une expérience culturelle comme personnelle.</p>
 
@@ -826,9 +870,9 @@ And I bet NYC is a nice city too, even if I never been&#8230;</p>
   
   <entry>
     <title type="html"><![CDATA[Web 2.0 Expo here I go !]]></title>
-    <link href="http://picsoung.github.io/blog/2011/03/28/web-2-0-expo-here-i-go/"/>
-    <updated>2011-03-28T07:48:00+02:00</updated>
-    <id>http://picsoung.github.io/blog/2011/03/28/web-2-0-expo-here-i-go</id>
+    <link href="http://picsoung.github.io/blog/2011/03/27/web-2-0-expo-here-i-go/"/>
+    <updated>2011-03-27T22:48:00-07:00</updated>
+    <id>http://picsoung.github.io/blog/2011/03/27/web-2-0-expo-here-i-go</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/web2expo_4c-300x147.jpg" alt="web2expo_4c-300x147.jpg" style="display:block; margin:0 auto;" title="web2expo_4c-300x147.jpg, mar. 2011" /></p>
 
 
@@ -881,9 +925,9 @@ Mon projet de startup <a href="http://DitchTheTourBus.com">DitchTheTourBus</a></
   
   <entry>
     <title type="html"><![CDATA[Create a startup webpage in less than 1 hour - Tools]]></title>
-    <link href="http://picsoung.github.io/blog/2011/03/15/create-a-startup-webpage-in-less-than-1-hour-tools/"/>
-    <updated>2011-03-15T04:10:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2011/03/15/create-a-startup-webpage-in-less-than-1-hour-tools</id>
+    <link href="http://picsoung.github.io/blog/2011/03/14/create-a-startup-webpage-in-less-than-1-hour-tools/"/>
+    <updated>2011-03-14T20:10:00-07:00</updated>
+    <id>http://picsoung.github.io/blog/2011/03/14/create-a-startup-webpage-in-less-than-1-hour-tools</id>
     <content type="html"><![CDATA[<p>As a <a href="http://startupweekend.org/" hreflang="en" title="StartupWeekend">StartupWeekend</a> alumni I know there are many things you have to do during the weekend in to order to present a nice demo to the audience. One of the important things to do is building a website to present your product and get known on the web.
 I wish I had at that time an article with a compilation of tools to use and an easy-to-follow tutorial about how to use these tools.
 This article is the first part of the tutorial, I will present the tools we will use in the second part.</p>
@@ -1016,9 +1060,9 @@ If thiq is not your case you can still sign up on <a href="http://launchrock.com
   
   <entry>
     <title type="html"><![CDATA[Immersion in DC's tech scene]]></title>
-    <link href="http://picsoung.github.io/blog/2011/02/08/immersion-in-dc-s-tech-scene/"/>
-    <updated>2011-02-08T03:49:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2011/02/08/immersion-in-dc-s-tech-scene</id>
+    <link href="http://picsoung.github.io/blog/2011/02/07/immersion-in-dc-s-tech-scene/"/>
+    <updated>2011-02-07T18:49:00-08:00</updated>
+    <id>http://picsoung.github.io/blog/2011/02/07/immersion-in-dc-s-tech-scene</id>
     <content type="html"><![CDATA[<p><img src="http://techcocktail.wpengine.netdna-cdn.com/wp-content/themes/thesis_17/custom/images/tc.gif" alt="" /></p>
 
 
@@ -1082,9 +1126,9 @@ I will for sure attend another <a href="http://www.techcocktail.com" hreflang="e
   
   <entry>
     <title type="html"><![CDATA[What I saw at Minnedemo]]></title>
-    <link href="http://picsoung.github.io/blog/2011/01/25/what-i-saw-at-minnedemo/"/>
-    <updated>2011-01-25T00:03:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2011/01/25/what-i-saw-at-minnedemo</id>
+    <link href="http://picsoung.github.io/blog/2011/01/24/what-i-saw-at-minnedemo/"/>
+    <updated>2011-01-24T15:03:00-08:00</updated>
+    <id>http://picsoung.github.io/blog/2011/01/24/what-i-saw-at-minnedemo</id>
     <content type="html"><![CDATA[<p>I am two weeks late but as the idiom says : &#8220;better late than never&#8221;. I would like to write about what I saw during the last <a href="http://minnestar.org/minnedemo/" hreflang="en">Minnedemo</a> on the 13th of January. Like this I am also inaugurating my first blog post in english \o/</p>
 
 
@@ -1204,7 +1248,7 @@ Inveni is an interesting product with a strong algorithm and a nice interface. U
   <entry>
     <title type="html"><![CDATA[En revenant de la Minnedemo]]></title>
     <link href="http://picsoung.github.io/blog/2011/01/16/en-revenant-de-la-minnedemo/"/>
-    <updated>2011-01-16T19:38:00+01:00</updated>
+    <updated>2011-01-16T10:38:00-08:00</updated>
     <id>http://picsoung.github.io/blog/2011/01/16/en-revenant-de-la-minnedemo</id>
     <content type="html"><![CDATA[<p>Se forcer un peu pour prendre le clavier (version moderne de prendre la plume) et raconter ce qui s&#8217;est passé à la conférence Minnedemo dont je vous avais parlé il y a quelques jours.
 Ça ne sert pas à grand-chose d&#8217;aller à ce genre de conf&#8217; si on n’en fait pas un petit compte rendu de ce qu&#8217;on y a vu ou appris.</p>
@@ -1364,9 +1408,9 @@ Avis à tous mes collègues étudiants je vous encourage à participer à ce gen
   
   <entry>
     <title type="html"><![CDATA[Je networke, tu networkes, nous networkons !]]></title>
-    <link href="http://picsoung.github.io/blog/2011/01/12/je-networke-tu-networkes-nous-networkons/"/>
-    <updated>2011-01-12T00:46:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2011/01/12/je-networke-tu-networkes-nous-networkons</id>
+    <link href="http://picsoung.github.io/blog/2011/01/11/je-networke-tu-networkes-nous-networkons/"/>
+    <updated>2011-01-11T15:46:00-08:00</updated>
+    <id>http://picsoung.github.io/blog/2011/01/11/je-networke-tu-networkes-nous-networkons</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/.linkedinWizard_m.jpg" alt="linkedinWizard.jpg" style="display:block; margin:0 auto;" title="linkedinWizard.jpg, janv. 2011" />
 <em>Image sous licence CC&nbsp;: <a href="http://www.flickr.com/photos/4everyoung/256180335/" hreflang="en">Originale</a></em></p>
 
@@ -1463,9 +1507,9 @@ Je vous stoppe tout de suite avant que votre imagination n&#8217;aille plus loin
   
   <entry>
     <title type="html"><![CDATA[Back to School - Sur les chapeaux de roues !]]></title>
-    <link href="http://picsoung.github.io/blog/2011/01/07/back-to-school-sur-les-chapeaux-de-roues/"/>
-    <updated>2011-01-07T07:44:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2011/01/07/back-to-school-sur-les-chapeaux-de-roues</id>
+    <link href="http://picsoung.github.io/blog/2011/01/06/back-to-school-sur-les-chapeaux-de-roues/"/>
+    <updated>2011-01-06T22:44:00-08:00</updated>
+    <id>http://picsoung.github.io/blog/2011/01/06/back-to-school-sur-les-chapeaux-de-roues</id>
     <content type="html"><![CDATA[<p><a href="http://picsoung.github.io/public/illus_billets/road-runner-4.jpg" title="RoadRunnerSchool"><img src="http://picsoung.github.io/public/illus_billets/.road-runner-4_s.jpg" alt="RoadRunnerSchool" style="float:left; margin: 0 1em 1em 0;" title="RoadRunnerSchool, janv. 2011" /></a>
 Wooouf ! Ça défrise ! Ça va à cent à l&#8217;heure et ça ne s&#8217;arrête pas ! Ça croit en fonction du temps… C&#8217;est pas Bip Bip, ni le Coyote qui suit Bip Bip… C&#8217;est plus fort ! C&#8217;est plus grand ! Et ça n’a pas besoin de dynamite pour tout faire péter… Ça s&#8217;appelle tout simplement : les cours…</p>
 
@@ -1498,9 +1542,9 @@ Autant dire que ceux-là n’y ont rien compris, y vont vraiment se suer à la t
   
   <entry>
     <title type="html"><![CDATA[American dream - Ôsakaï !]]></title>
-    <link href="http://picsoung.github.io/blog/2010/12/03/american-dream-osakai/"/>
-    <updated>2010-12-03T06:59:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2010/12/03/american-dream-osakai</id>
+    <link href="http://picsoung.github.io/blog/2010/12/02/american-dream-osakai/"/>
+    <updated>2010-12-02T21:59:00-08:00</updated>
+    <id>http://picsoung.github.io/blog/2010/12/02/american-dream-osakai</id>
     <content type="html"><![CDATA[<p>Enfin ! Je lâche un grand OUF de soulagement ! Le feu dans la cheminée est enfin allumé ! Je sais c&#8217;est puéril, mais chacun ses petites victoires. Grâce à cela au moment d&#8217;aller me coucher quand je ferais le bilan de ma journée je ressentirais une petite satisfaction tel le nolife qui vient d&#8217;accomplir une quête.</p>
 
 
@@ -1534,7 +1578,7 @@ Et encore &#8220;That is just the beginning&#8221;&#8230;&nbsp;!</p>
   <entry>
     <title type="html"><![CDATA[Startup Weekend à Minneapolis H-3]]></title>
     <link href="http://picsoung.github.io/blog/2010/11/19/startup-weekend-a-minneapolis-h-3/"/>
-    <updated>2010-11-19T21:22:00+01:00</updated>
+    <updated>2010-11-19T12:22:00-08:00</updated>
     <id>http://picsoung.github.io/blog/2010/11/19/startup-weekend-a-minneapolis-h-3</id>
     <content type="html"><![CDATA[<p><img src="http://startupweekend.org/images/sw_GEW.png" alt="" />Dans une petite dizaine de minutes je vais monter dans le bus qui m&#8217;emmènera à Minneapolis pour L&#8217;événement de la fin d&#8217;année&nbsp;: le S<a href="http://twincities.startupweekend.org/" hreflang="en">tartup Weekend</a>  :) J&#8217;ai acheté mon billet au début de mois d&#8217;octobre, j&#8217;aurais donc pu vous en parler avant, mais la procrastination aidant il n&#8217;en fut rien&#8230;</p>
 
@@ -1570,9 +1614,9 @@ Je très excité de vivre cette expérience :) C&#8217;est l&#8217;occasion de r
   
   <entry>
     <title type="html"><![CDATA[Quelques photos]]></title>
-    <link href="http://picsoung.github.io/blog/2010/11/03/quelques-photos/"/>
-    <updated>2010-11-03T06:40:00+01:00</updated>
-    <id>http://picsoung.github.io/blog/2010/11/03/quelques-photos</id>
+    <link href="http://picsoung.github.io/blog/2010/11/02/quelques-photos/"/>
+    <updated>2010-11-02T22:40:00-07:00</updated>
+    <id>http://picsoung.github.io/blog/2010/11/02/quelques-photos</id>
     <content type="html"><![CDATA[<p>Les différentes galeries&nbsp;:</p>
 
 
@@ -1619,9 +1663,9 @@ Je très excité de vivre cette expérience :) C&#8217;est l&#8217;occasion de r
   
   <entry>
     <title type="html"><![CDATA[American dream - French cliché]]></title>
-    <link href="http://picsoung.github.io/blog/2010/10/08/american-dream-french-cliche/"/>
-    <updated>2010-10-08T06:42:00+02:00</updated>
-    <id>http://picsoung.github.io/blog/2010/10/08/american-dream-french-cliche</id>
+    <link href="http://picsoung.github.io/blog/2010/10/07/american-dream-french-cliche/"/>
+    <updated>2010-10-07T21:42:00-07:00</updated>
+    <id>http://picsoung.github.io/blog/2010/10/07/american-dream-french-cliche</id>
     <content type="html"><![CDATA[<p>Je leur ai demandé lors de ces présentations quel étaient leurs motivations pour apprendre le français et quel était le plus gros cliché qu&#8217;ils avaient sur notre pays. J&#8217;ai eu droit à pas mal de choses mais aujourd&#8217;hui c&#8217;était le pompon ! Je ne pouvais pas ne pas vous le raconter…</p>
 
 
@@ -1688,68 +1732,6 @@ Avis donc aux demoiselles : le monde vous regarde ! :P</p>
 <p>Voilà ma petite gaieté de la journée qui m&#8217;a bien fait rigoler :)
 <img src="http://upload.wikimedia.org/wikipedia/commons/3/3b/Baguette.png" alt="" />
 image wikmedia sous licence  CC</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Geek - Où je suis passé à Cloudflare]]></title>
-    <link href="http://picsoung.github.io/blog/2010/10/06/geek-ou-je-suis-passe-a-cloudflare/"/>
-    <updated>2010-10-06T06:24:00+02:00</updated>
-    <id>http://picsoung.github.io/blog/2010/10/06/geek-ou-je-suis-passe-a-cloudflare</id>
-    <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/.cloudfare_homepage_s.jpg" alt="cloudflare home" style="float:right; margin: 0 0 1em 1em;" title="cloudfare home, oct. 2010" />Vous n’avez certainement rien remarqué et c’est bien normal… J&#8217;ai découvert Cloudflare après la lecture d&#8217;un <a href="http://fr.techcrunch.com/2010/09/30/techcrunch-disrupt-ce-qui-sest-passe-a-lautre-cote-de-latlantique-la-meilleure-start-up/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+francaistechcrunch+%28TechCrunch+en+Francais%29" hreflang="fr">article</a> de Techcrunch France à propos de la conférence Techcrunch Disrupt qui s&#8217;est déroulée du 27 au 29 septembre dernier à San Francisco. Le principe de ces trois jours de conférence est de réunir start-up et entrepreneurs du web afin de faire connaître les projets innovants en recherche de fonds. À cette occasion quelques boîtes françaises (<a href="http://dismoiou.fr/" hreflang="fr">Dismoiou</a>, <a href="http://www.boosket.com/en" hreflang="en">Boostket</a>, <a href="http://kwaga.com/" hreflang="fr">Kwaga</a>, <a href="http://www.stribe.com/" hreflang="fr">Stribe</a> et<a href="http://www.wozaik.com/bienvenue" hreflang="fr"> Wozaik</a>) avaient fait le voyage mais n&#8217;ont malheureusement pas remportées la récompense de 50 000 $ attribuée à la meilleure des 27 start-up sélectionnées.</p>
-
-
-
-
-<p>C&#8217;est <a href="http://www.qwiki.com/" hreflang="en">Qwiki</a> qui s&#8217;est hissé sur la première marche du podium. Un service qui devrait révolutionner notre manière de consommer Internet. J&#8217;avoue ne pas avoir été spécialement bluffé…
-Sur les autres marches on retrouvait <a href="http://www.pinger.com/content/int/" hreflang="en">Pinguer</a> qui édite des applications mobiles et<a href="https://www.cloudflare.com/home.html" hreflang="en"> Cloudflare</a> la fameuse application que j&#8217;ai adopté.</p>
-
-
-
-
-<p>Je ne sais pas trop d&#8217;ailleurs pourquoi j&#8217;ai passé le pas. C&#8217;est assez contradictoire j&#8217;ai tendance à pas écrire souvent ici mais par contre j&#8217;adore ajouter des fonctionnalités. C&#8217;est comme ça que j&#8217;ai installé les outils de statistiques Google Analytics au début du mois de septembre et Xiti un peu plus tard.</p>
-
-
-
-
-<p>Cloudflare s&#8217;annonce comme quelque chose qui doit accélérer notre site. Le bourrer d&#8217;amphét&#8217; pour qu&#8217;il explose le 100m du chargement. Après l&#8217;installation j&#8217;ai effectivement eu l&#8217;impression que ça allait plus vite. Comme à chaque fois cela reste subjectif. On m&#8217;aurait dit ça envoie un message aux extraterrestres je l&#8217;aurais peut-être cru.</p>
-
-
-
-
-<p>Quoi qu&#8217;il en soit c&#8217;est très facile d&#8217;installation. Il suffit de créer un compte en renseignant l&#8217;adresse de son site. Ils s&#8217;occupent de trouver les domaines liés et de demander lesquels on veut faire bénéficier de la &#8220;supercharge&#8221;. Pour ma part je l&#8217;ai activé sur tout mon domaine nicolasgrenie.com et ses sous domaines pro et blog. On a plus qu&#8217;à changer les DNS de son domaine pour les faire pointer chez Cloudflare. Et paf ! C’est fini, à nous la vitesse !</p>
-
-
-
-
-<p><img src="http://picsoung.github.io/public/illus_billets/.cloudfare_dashboard_s.jpg" alt="cloudflare dashboard" style="float:left; margin: 0 1em 1em 0;" title="cloudflare dashboard, oct. 2010" />L&#8217;idée est simple ils jouent les intermédiaires pour empêcher les vilains visiteurs de mettre le barouf chez vous. Comment&nbsp;? Si quelqu&#8217;un accède trop de fois d&#8217;un coup à une même page on lui demande de remplir un captcha. Comme c&#8217;est un robot y peut pas… L&#8217;IP est donc mis en zone de quarantaine, il sera demandé une IP à chaque fois qu&#8217;elle essaye de se connecter.</p>
-
-
-
-
-<p>D&#8217;après les stats fournies pour l&#8217;instant après 5 jours d&#8217;utilisation cela m&#8217;a permis d&#8217;arrêter 4 bots spammeurs, d&#8217;économiser 1 854 requêtes, 27MB de bande passante, et les pages se chargent en 0.27sec au lieu de 0.37 \o/ Je suis un homme heureux :)</p>
-
-
-
-
-<p>L&#8217;avantage de tout ça c&#8217;est que le service est Gratuit, ce qui est plutôt pas mal pour ce genre de service. Comme beaucoup de sites actuellement le système est de type Freemium il faudra donc payer une petite obole pour bénéficier d&#8217;autres services.</p>
-
-
-
-
-<p>J&#8217;ai donc apprécié la simplicité d&#8217;installation, le côté user-friendly de l&#8217;interface du Dashboard ainsi que les services (sécurité, accélération, disponibilité H24 de mon site).
-On notera également que les concepteurs de Cloudflare font parti du projet Project Honey Pot qui est une espèce de grosse base de données temps réel des spammeurs mis à jour automatiquement grâce aux webmasters qui ont installé ce service sur leur site.</p>
-
-
-
-
-<p>À tester donc amis webmestres !</p>
-
-
-
-
-<p>PS&nbsp;: marre de flickr… j&#8217;a installé un plugin gallery au blog donc pour sûr des photos de l&#8217;automne américain arrivent prochainement</p>
 
 ]]></content>
   </entry>
