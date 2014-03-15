@@ -4,7 +4,7 @@
   <title><![CDATA[Hack and frogs]]></title>
   <link href="http://picsoung.github.io/atom.xml" rel="self"/>
   <link href="http://picsoung.github.io/"/>
-  <updated>2014-02-27T22:21:04-08:00</updated>
+  <updated>2014-03-14T21:00:17-04:00</updated>
   <id>http://picsoung.github.io/</id>
   <author>
     <name><![CDATA[Nicolas Grenié]]></name>
@@ -14,9 +14,248 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Use Google Spreasheet and Firebase as Backend for Your Site]]></title>
+    <link href="http://picsoung.github.io/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/"/>
+    <updated>2014-03-14T20:58:02-04:00</updated>
+    <id>http://picsoung.github.io/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site</id>
+    <content type="html"><![CDATA[<h2>Context</h2>
+
+<p>Recently at <a href="http://3scale.net">3scale</a>, we had to re-build our customer page to make it more dynamic and easy to maintain. For now it was a classic Wordpress post, with html code in it. Really hard to maintain anytime we had to add a new customer or change its information.</p>
+
+<p>As I was in charge of the project, I immediately thought about all the magic stuff I played around in Meteor. Stuff like dynamic view update when data changes in database and Handlebar Templating.
+But part of the requirements was to build something using Wordpress without using any iframe. Meteor apps were out of the game…</p>
+
+<p>At that time an article about using Google Spreadsheet as a backend-system got a bit of hype, so we decided to try that.
+It has the advantage no not neccesitate any coding experience from the person maintaining the spreadsheet, perfect for this project.</p>
+
+<p>To make the page dynamic and reactive we added Handlebar-like templating and <a href="http://firebase.com">Firebase</a> support.
+In this article I want to walk you through a step-by-step tiny project so you could also use what&rsquo;ve done.</p>
+
+<h2>Project idea</h2>
+
+<p>I am running a great conference soon : MemeCon, a conference about memes. I built a nice one-page website and want my assistant to update the agenda easily.</p>
+
+<p>We let people submit they paper proposal using a Google form, and approved them manually so they could be added on the site.</p>
+
+<h2>What you need</h2>
+
+<ul>
+<li>a single page website, I personally used a great template found <a href="http://startbootstrap.com/one-page-wonder">on StartBootrap.com</a></li>
+<li>a Google Form and the response spreadsheet</li>
+<li>a <a href="http://zpr.io/gCex">Zapier</a> account (Free tier is enough for the demo)</li>
+<li>a <a href="http://firebase.com">Firebase</a> account (Free tier is enough for the demo)</li>
+</ul>
+
+
+<h2>Google Spreadsheet setup</h2>
+
+<p>On Google side, once you have configure the form you want, go to the corresponding response sheet (click <strong>View Responses</strong>).</p>
+
+<p>There we will add a column named <strong>Accepted</strong>. If a submission is Accepted we will put <strong>YES</strong> in this column. To make it easier to maintain, let&rsquo;s setup cells so it will only accept <strong>YES</strong> or <strong>NO</strong> as values.</p>
+
+<p>Go to <strong>Data>Validation</strong> menu.
+In <strong>Criteriat</strong> select <strong>From list items</strong> and put <em>YES, NO</em> in the field and click OK.
+Once you have done that, you can copy the cell to all the column.</p>
+
+<p>We should be done with Google Spreadsheet.</p>
+
+<h2>Firebase</h2>
+
+<p><a href="http://firebase.com">Firebase</a> is an amazing tool to build realtime applications and share the data with all the concurrent users. Here we are going to use it as a fasta backend infrastructure accesible in Javascript. We will only store accepted talks on <a href="http://firebase.com">Firebase</a>.</p>
+
+<p>Once your <a href="http://firebase.com">Firebase</a> is activated, you will need to create an app. Your app will be accessible at <code>YOURAPP.firebaseIO.com</code>.
+Click your app name to access <a href="http://firebase.com">Firebase</a> dashboard, called the Forge. That&rsquo;s where you will your data getting created in real-time. You can also create and modify data manually.</p>
+
+<p>Imagine the data stored as a tree, with roots and leafs. To organize our dataset we want to create a <strong>talks</strong> root.
+The best way is to great it under main root and add an empty leaf that you will delete after.
+To add or delete a node, hover on its name and either click <strong>+</strong> to add a child node or <strong>&ndash;</strong> to delete the node and its child.</p>
+
+<p>You should have something like this at this point.</p>
+
+<p><img class="left" src="http://picsoung.github.io/images/Forge_Firebase_Graphical_Debugger.png" width="350" height="350" title="image" alt="images"></p>
+
+<p>We are done with <a href="http://firebase.com">Firebase</a> configuration now.</p>
+
+<h2>Zapier</h2>
+
+<p>To export data from Google Spreadsheet to <a href="http://firebase.com">Firebase</a> I was too lazy to code and work with Google Webhooks so I found that Zapier will be a good intermediate to do that for me.
+If you are familiar with IFFT it&rsquo;s a similar product with more options.</p>
+
+<p>What the Zap will do: everytime a row in the spreadsheet it will add/update a record in <a href="http://firebase.com">Firebase</a>.</p>
+
+<ol>
+<li>Make a new Zap</li>
+<li>Select Google Doc for the left service, with <em>Updated Spreadsheet Row</em> as a trigger.</li>
+<li>Select <a href="http://firebase.com">Firebase</a> for the right service, with <em>Update/set record ID</em> as a trigger
+your should have something like this : <img class="left" src="http://picsoung.github.io/images/Editor_Zapier.png" title="image" alt="images"></li>
+<li>On step 2 and 3 of the Zap creation, you will have to log on your Google and <a href="http://firebase.com">Firebase</a> accounts, that should be pretty straight forward</li>
+<li>On step 4, you select the spreasheet and the sheet where the responses are</li>
+<li>We add a custom filter on <em>Accepted</em> column so text matches exactly <strong>YES</strong> to have only accepted submissions</li>
+<li>At step 5 you setup the path as <em>/talks/authorname/</em> so talks will be listed by their authorname under <strong>talks</strong> node
+fields to store part let you choose which information you want to store. It&rsquo;s also useful to rename column name.
+Mine looks like this <img class="left" src="http://picsoung.github.io/images/Zapier_step5.png" title="image" alt="images"></li>
+<li>You can test and name your Zap.</li>
+</ol>
+
+
+<p>Your test should pass and add a record to <a href="http://firebase.com">Firebase</a>. Check on the <a href="http://firebase.com">Firebase</a> forge to see if it worked.
+A common problem is that <a href="http://firebase.com">Firebase</a> does not like variable names with special character, and Google Spreadsheet column names are usually called <em>gsx$columnname</em>.</p>
+
+<p>One solution to that is to rename columns in the <em>Fields to store</em> part as described <a href="https://zapier.com/help/how-get-started-firebase/#common-problems-with-firebase">here</a></p>
+
+<h2>Website setup</h2>
+
+<p>Now that our data are stored on <a href="http://firebase.com">Firebase</a>, we need to get them and display them on the page.</p>
+
+<h3>Template</h3>
+
+<p>As we are using a static HTML file we can&rsquo;t use any Handlebar or Moustache templating system that need Node to precompile templates.</p>
+
+<p>Instead I used a solution called <a href="https://github.com/adammark/Markup.js/">Markup.js</a>.
+Include it in your project like you will do with any other javascript file.</p>
+
+<p>Somewhere in your page, where you want to display submissions add this piece of code</p>
+
+<p><code>&lt;div id="talks-list"&gt;&lt;/div&gt;</code></p>
+
+<p>Then add the end of the file add :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">&quot;talks-list-template&quot;</span> <span class="na">type=</span><span class="s">&quot;text/template&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="p"></span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">img</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette-image img-circle img-responsive pull-left&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width: 200px;height:200px;&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h3</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="p"></span>
+</span><span class='line'>                <span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-muted&quot;</span><span class="o">&gt;</span><span class="nx">by</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://twitter.com/&quot;</span><span class="o">&gt;</span><span class="p"></span><span class="o">&lt;</span><span class="err">/a&gt;&lt;/span&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="err">/h3&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">p</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;lead&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>                <span class="p"></span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-info&quot;</span><span class="o">&gt;</span><span class="p"></span><span class="o">&lt;</span><span class="err">/span&gt;&lt;/h4&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class='line'>      <span class="p"></span>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>First line initiate a template named <code>talks-list-template</code></p>
+
+<p>the <code>..</code> block corresponds to a forEach loop on an array <code>talks</code>, in this block each call to another &#8220; THING will be related to the current object in the forEach loop.</p>
+
+<p>For example, by calling <code>` we get the authorame of the current talk oject contained in</code>talks` array.</p>
+
+<p>Now we have to pass to this template the corresponding <code>talks</code> object.</p>
+
+<h3>Getting data</h3>
+
+<p>Add Firebase SDK to your project <code>&lt;script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'&gt;&lt;/script&gt;</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;READY&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">talks_array</span> <span class="o">=</span><span class="p">[];</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">talksDB</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Firebase</span><span class="p">(</span><span class="s1">&#39;https://YOURAPP.firebaseio.com/talks&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">talksDB</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">.</span><span class="nx">val</span><span class="p">()</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Error reading snapshot&#39;</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">.</span><span class="nx">val</span><span class="p">(),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="nx">talk</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">talks_array</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">talk</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>            <span class="nx">talks_array</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">(</span><span class="nx">talks_array</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">){</span><span class="k">return</span> <span class="nx">t</span><span class="p">.</span><span class="nx">time</span><span class="p">});</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;talks-list-template&quot;</span><span class="p">).</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">textContent</span><span class="p">;</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">talks</span><span class="o">:</span> <span class="nx">talks_array</span><span class="p">,</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#talks-list&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">Mark</span><span class="p">.</span><span class="nx">up</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">context</span><span class="p">));</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;DONE&quot;</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>We initiate the <code>talksDB</code> object we the data available at <code>https://YOURAPP.firebaseio.com/talks</code></li>
+<li>We read the data once. in the case of a realtime app you will use <code>on</code> instead</li>
+<li>Loop over the data to create an array</li>
+<li>(optional)Sort the array by date (need <a href="http://underscorejs.org">underscorejs</a>)</li>
+<li>Search for template <code>talks-list-template</code>, initiate <code>talks</code> array with the one just created.</li>
+<li>Apply in the div with id <code>talks-list</code> the template.</li>
+</ol>
+
+
+<h2>Usage</h2>
+
+<p>To try if your app is working well follow these steps:
+1. submit info on your Google Form.
+2. accept one submit
+3. Run Zapier&rsquo;s Zap manually
+4. Check that the talk is added in Firebase Forge
+5. Load your static html file</p>
+
+<p>You should see your talk proposal listed.
+In production you will only need to update the Google Spreadsheet to update your website.</p>
+
+<h2>What could be improve</h2>
+
+<h3>Zapier and Webhooks</h3>
+
+<p>If you are less lazy than myself you can find a way to go hover Zapier and hook google spreasheet directly to <a href="http://firebase.com">Firebase</a>.
+Also, Zapier zaps are run every 15minutes on free tier, so it takes 15minutes to actually update your website. But if you run the zap manually it&rsquo;s instant.</p>
+
+<h3>Security</h3>
+
+<p>By default you <a href="http://firebase.com">Firebase</a> data are readable and writable by anybody.
+To change that you can go to <a href="http://YOURAPP.firebaseio.com">http://YOURAPP.firebaseio.com</a> in the <code>Security</code> tab and change <code>".write": true</code> to <code>".write": false</code>. Zapier will still be able to write into it, but not random users navigating on your website.
+More about <a href="https://www.firebase.com/docs/security-quickstart.html">Firebase Security</a></p>
+
+<h3>Host your whole app on Firebase</h3>
+
+<p>Recently <a href="http://firebase.com">Firebase</a> launched a beta program to host static apps directly on their platform.
+Check the <a href="https://www.firebase.com/docs/hosting.html">Documentation</a> to learn more.</p>
+
+<p>It might be a great way to deploy prototype, and gets all the perks of <a href="http://firebase.com">Firebase</a> speed.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Webfaction to Host Your App]]></title>
     <link href="http://picsoung.github.io/blog/2014/02/27/webfaction-to-host-your-app/"/>
-    <updated>2014-02-27T00:00:00-08:00</updated>
+    <updated>2014-02-27T00:00:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2014/02/27/webfaction-to-host-your-app</id>
     <content type="html"><![CDATA[<p>Webhosting to be a giant mess with thousands of actors 10 years ago, you would have spend hours to find the perfect hosting company. If you did not want to go to the big guys like <a href="http://www.1and1.com/">1&amp;1</a> or <a href="http://ovh.com">OVH</a> and pay a three-figures bill to have basic features you really had few options…</p>
 
@@ -57,9 +296,9 @@ Happy Coding !</p>
   
   <entry>
     <title type="html"><![CDATA[I Am a Buspreneur - Day 1]]></title>
-    <link href="http://picsoung.github.io/blog/2012/03/20/i-am-a-buspreneur-day-1/"/>
-    <updated>2012-03-20T23:42:00-07:00</updated>
-    <id>http://picsoung.github.io/blog/2012/03/20/i-am-a-buspreneur-day-1</id>
+    <link href="http://picsoung.github.io/blog/2012/03/21/i-am-a-buspreneur-day-1/"/>
+    <updated>2012-03-21T02:42:00-04:00</updated>
+    <id>http://picsoung.github.io/blog/2012/03/21/i-am-a-buspreneur-day-1</id>
     <content type="html"><![CDATA[<p>WoW! Just wow ! i just get back from the crazy SXSW, or for those who don&#8217;t know: &#8220;the Las Vegas of startup world&#8221;. It&#8217;s been an amazing experience from Day 1 till the end. I can&#8217;t wait to tell you about what happened ;)</p>
 
 
@@ -173,7 +412,7 @@ Kinetic.ly - Tools for motion analysis</p>
   <entry>
     <title type="html"><![CDATA[I Am on a Bus!]]></title>
     <link href="http://picsoung.github.io/blog/2012/03/06/i-am-on-a-bus/"/>
-    <updated>2012-03-06T01:00:00-08:00</updated>
+    <updated>2012-03-06T04:00:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2012/03/06/i-am-on-a-bus</id>
     <content type="html"><![CDATA[<p><img src="http://50.56.192.33/wp-content/uploads/2012/03/silicon_valley_bus_s.png" alt="" /></p>
 
@@ -288,7 +527,7 @@ I just know the basic elevator pitch about the <a href="http://StartupBus.com" h
   <entry>
     <title type="html"><![CDATA[How to Create a Startup Webpage in Less Than 1 Hour - Part 2]]></title>
     <link href="http://picsoung.github.io/blog/2012/02/03/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2/"/>
-    <updated>2012-02-03T16:47:00-08:00</updated>
+    <updated>2012-02-03T19:47:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2012/02/03/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2</id>
     <content type="html"><![CDATA[<p>Last weekend I attended my 3rd Startup Weekend but this time I was part of the facilitators. This one was focused on Mobile and was held at the AT&amp;T Foundry (awesome building !!).</p>
 
@@ -352,7 +591,7 @@ You can find the first part of the article about which tools we are going to use
   <entry>
     <title type="html"><![CDATA[I <3 APIs!]]></title>
     <link href="http://picsoung.github.io/blog/2011/11/20/i-3-apis/"/>
-    <updated>2011-11-20T18:25:00-08:00</updated>
+    <updated>2011-11-20T21:25:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2011/11/20/i-3-apis</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/.api1_s.jpg" alt="api1.gif" style="display:block; margin:0 auto;" title="api1.gif, déc. 2011" /></p>
 
@@ -476,7 +715,7 @@ There are also API directories like <a href="http://programmableweb.com" hreflan
   <entry>
     <title type="html"><![CDATA[Disable Comment Box on Facebook Like Button]]></title>
     <link href="http://picsoung.github.io/blog/2011/10/30/disable-comment-box-on-facebook-like-button/"/>
-    <updated>2011-10-30T18:14:00-07:00</updated>
+    <updated>2011-10-30T21:14:00-04:00</updated>
     <id>http://picsoung.github.io/blog/2011/10/30/disable-comment-box-on-facebook-like-button</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/1-Facebook.png" alt="1-Facebook.png" title="1-Facebook.png, oct. 2011" /></p>
 
@@ -534,7 +773,7 @@ Have fun &#8220;hacking&#8221; Facebook :)</p>
   <entry>
     <title type="html"><![CDATA[In Hackathon We Trust]]></title>
     <link href="http://picsoung.github.io/blog/2011/08/28/in-hackathon-we-trust/"/>
-    <updated>2011-08-28T20:26:00-07:00</updated>
+    <updated>2011-08-28T23:26:00-04:00</updated>
     <id>http://picsoung.github.io/blog/2011/08/28/in-hackathon-we-trust</id>
     <content type="html"><![CDATA[<p>Spread the word : Geeks are not living in caves anymore !! Or at least they going out from their caves to see the sunlight once in a while for a specific occasion. Something in between a computer science class, a LAN party, a crazy scientist lab and a networking event.</p>
 
@@ -689,9 +928,9 @@ People are coming to work on their projects or to build new stuff during the eve
   
   <entry>
     <title type="html"><![CDATA[Students, 3 Reasons Why You Should Attend Web 2.0 Expo NYC in Fall (65% Discount)]]></title>
-    <link href="http://picsoung.github.io/blog/2011/08/18/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/"/>
-    <updated>2011-08-18T23:11:00-07:00</updated>
-    <id>http://picsoung.github.io/blog/2011/08/18/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount</id>
+    <link href="http://picsoung.github.io/blog/2011/08/19/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/"/>
+    <updated>2011-08-19T02:11:00-04:00</updated>
+    <id>http://picsoung.github.io/blog/2011/08/19/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount</id>
     <content type="html"><![CDATA[<p><img src="http://blonville.unblog.fr/files/2007/09/master.gif" alt="" />
 I came to San Francisco for the first time last Christmas with my family for Christmas break. We did a lot of tourist stuff, but being in family of professors interested by technology, science and programming, you cannot avoid the &#8220;Tech tour&#8221; of the Bay. So we visited downtown Palo Alto, Stanford University, Berkeley and San Francisco SOMA&#8230;</p>
 
@@ -819,7 +1058,7 @@ And I bet NYC is a nice city too, even if I never been&#8230;</p>
   <entry>
     <title type="html"><![CDATA[Année à St. Olaf - Le Bilan - Par Quoi Commencer ?]]></title>
     <link href="http://picsoung.github.io/blog/2011/06/02/annee-a-st-olaf-le-bilan-par-quoi-commencer/"/>
-    <updated>2011-06-02T14:56:00-07:00</updated>
+    <updated>2011-06-02T17:56:00-04:00</updated>
     <id>http://picsoung.github.io/blog/2011/06/02/annee-a-st-olaf-le-bilan-par-quoi-commencer</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/stolaf/.lion-black_t.jpg" alt="lion-black.jpg" style="float:left; margin: 0 1em 1em 0;" title="lion-black.jpg, juin 2011" />Presqu&#8217;un an après avoir quitté l&#8217;Hexagone me voici de retour dans nos contrées. Du poisson, du fromage et du soleil enfin&nbsp;! Mais non sans mal, car il a fallu dire au revoir au campus de St. Olaf et à tous ceux qui ont fait de cette aventure quelque chose de magique. Aujourd&#8217;hui le temps est venu d&#8217;essayer de démêler les fils de la pelote de cette année passée aux États-Unis et de sortir de l&#8217;inconscient ce qui a pu changer en moi et qui a fait de cette extraordinaire année une expérience culturelle comme personnelle.</p>
 
@@ -868,9 +1107,9 @@ And I bet NYC is a nice city too, even if I never been&#8230;</p>
   
   <entry>
     <title type="html"><![CDATA[Web 2.0 Expo Here I Go !]]></title>
-    <link href="http://picsoung.github.io/blog/2011/03/27/web-2-0-expo-here-i-go/"/>
-    <updated>2011-03-27T22:48:00-07:00</updated>
-    <id>http://picsoung.github.io/blog/2011/03/27/web-2-0-expo-here-i-go</id>
+    <link href="http://picsoung.github.io/blog/2011/03/28/web-2-0-expo-here-i-go/"/>
+    <updated>2011-03-28T01:48:00-04:00</updated>
+    <id>http://picsoung.github.io/blog/2011/03/28/web-2-0-expo-here-i-go</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/web2expo_4c-300x147.jpg" alt="web2expo_4c-300x147.jpg" style="display:block; margin:0 auto;" title="web2expo_4c-300x147.jpg, mar. 2011" /></p>
 
 
@@ -924,7 +1163,7 @@ Mon projet de startup <a href="http://DitchTheTourBus.com">DitchTheTourBus</a></
   <entry>
     <title type="html"><![CDATA[Create a Startup Webpage in Less Than 1 Hour - Tools]]></title>
     <link href="http://picsoung.github.io/blog/2011/03/14/create-a-startup-webpage-in-less-than-1-hour-tools/"/>
-    <updated>2011-03-14T20:10:00-07:00</updated>
+    <updated>2011-03-14T23:10:00-04:00</updated>
     <id>http://picsoung.github.io/blog/2011/03/14/create-a-startup-webpage-in-less-than-1-hour-tools</id>
     <content type="html"><![CDATA[<p>As a <a href="http://startupweekend.org/" hreflang="en" title="StartupWeekend">StartupWeekend</a> alumni I know there are many things you have to do during the weekend in to order to present a nice demo to the audience. One of the important things to do is building a website to present your product and get known on the web.
 I wish I had at that time an article with a compilation of tools to use and an easy-to-follow tutorial about how to use these tools.
@@ -1059,7 +1298,7 @@ If thiq is not your case you can still sign up on <a href="http://launchrock.com
   <entry>
     <title type="html"><![CDATA[Immersion in DC's Tech Scene]]></title>
     <link href="http://picsoung.github.io/blog/2011/02/07/immersion-in-dc-s-tech-scene/"/>
-    <updated>2011-02-07T18:49:00-08:00</updated>
+    <updated>2011-02-07T21:49:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2011/02/07/immersion-in-dc-s-tech-scene</id>
     <content type="html"><![CDATA[<p><img src="http://techcocktail.wpengine.netdna-cdn.com/wp-content/themes/thesis_17/custom/images/tc.gif" alt="" /></p>
 
@@ -1125,7 +1364,7 @@ I will for sure attend another <a href="http://www.techcocktail.com" hreflang="e
   <entry>
     <title type="html"><![CDATA[What I Saw at Minnedemo]]></title>
     <link href="http://picsoung.github.io/blog/2011/01/24/what-i-saw-at-minnedemo/"/>
-    <updated>2011-01-24T15:03:00-08:00</updated>
+    <updated>2011-01-24T18:03:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2011/01/24/what-i-saw-at-minnedemo</id>
     <content type="html"><![CDATA[<p>I am two weeks late but as the idiom says : &#8220;better late than never&#8221;. I would like to write about what I saw during the last <a href="http://minnestar.org/minnedemo/" hreflang="en">Minnedemo</a> on the 13th of January. Like this I am also inaugurating my first blog post in english \o/</p>
 
@@ -1246,7 +1485,7 @@ Inveni is an interesting product with a strong algorithm and a nice interface. U
   <entry>
     <title type="html"><![CDATA[En Revenant De La Minnedemo]]></title>
     <link href="http://picsoung.github.io/blog/2011/01/16/en-revenant-de-la-minnedemo/"/>
-    <updated>2011-01-16T10:38:00-08:00</updated>
+    <updated>2011-01-16T13:38:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2011/01/16/en-revenant-de-la-minnedemo</id>
     <content type="html"><![CDATA[<p>Se forcer un peu pour prendre le clavier (version moderne de prendre la plume) et raconter ce qui s&#8217;est passé à la conférence Minnedemo dont je vous avais parlé il y a quelques jours.
 Ça ne sert pas à grand-chose d&#8217;aller à ce genre de conf&#8217; si on n’en fait pas un petit compte rendu de ce qu&#8217;on y a vu ou appris.</p>
@@ -1407,7 +1646,7 @@ Avis à tous mes collègues étudiants je vous encourage à participer à ce gen
   <entry>
     <title type="html"><![CDATA[Je Networke, Tu Networkes, Nous Networkons !]]></title>
     <link href="http://picsoung.github.io/blog/2011/01/11/je-networke-tu-networkes-nous-networkons/"/>
-    <updated>2011-01-11T15:46:00-08:00</updated>
+    <updated>2011-01-11T18:46:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2011/01/11/je-networke-tu-networkes-nous-networkons</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/.linkedinWizard_m.jpg" alt="linkedinWizard.jpg" style="display:block; margin:0 auto;" title="linkedinWizard.jpg, janv. 2011" />
 <em>Image sous licence CC&nbsp;: <a href="http://www.flickr.com/photos/4everyoung/256180335/" hreflang="en">Originale</a></em></p>
@@ -1505,9 +1744,9 @@ Je vous stoppe tout de suite avant que votre imagination n&#8217;aille plus loin
   
   <entry>
     <title type="html"><![CDATA[Back to School - Sur Les Chapeaux De Roues !]]></title>
-    <link href="http://picsoung.github.io/blog/2011/01/06/back-to-school-sur-les-chapeaux-de-roues/"/>
-    <updated>2011-01-06T22:44:00-08:00</updated>
-    <id>http://picsoung.github.io/blog/2011/01/06/back-to-school-sur-les-chapeaux-de-roues</id>
+    <link href="http://picsoung.github.io/blog/2011/01/07/back-to-school-sur-les-chapeaux-de-roues/"/>
+    <updated>2011-01-07T01:44:00-05:00</updated>
+    <id>http://picsoung.github.io/blog/2011/01/07/back-to-school-sur-les-chapeaux-de-roues</id>
     <content type="html"><![CDATA[<p><a href="http://picsoung.github.io/public/illus_billets/road-runner-4.jpg" title="RoadRunnerSchool"><img src="http://picsoung.github.io/public/illus_billets/.road-runner-4_s.jpg" alt="RoadRunnerSchool" style="float:left; margin: 0 1em 1em 0;" title="RoadRunnerSchool, janv. 2011" /></a>
 Wooouf ! Ça défrise ! Ça va à cent à l&#8217;heure et ça ne s&#8217;arrête pas ! Ça croit en fonction du temps… C&#8217;est pas Bip Bip, ni le Coyote qui suit Bip Bip… C&#8217;est plus fort ! C&#8217;est plus grand ! Et ça n’a pas besoin de dynamite pour tout faire péter… Ça s&#8217;appelle tout simplement : les cours…</p>
 
@@ -1540,9 +1779,9 @@ Autant dire que ceux-là n’y ont rien compris, y vont vraiment se suer à la t
   
   <entry>
     <title type="html"><![CDATA[American Dream - Ôsakaï !]]></title>
-    <link href="http://picsoung.github.io/blog/2010/12/02/american-dream-osakai/"/>
-    <updated>2010-12-02T21:59:00-08:00</updated>
-    <id>http://picsoung.github.io/blog/2010/12/02/american-dream-osakai</id>
+    <link href="http://picsoung.github.io/blog/2010/12/03/american-dream-osakai/"/>
+    <updated>2010-12-03T00:59:00-05:00</updated>
+    <id>http://picsoung.github.io/blog/2010/12/03/american-dream-osakai</id>
     <content type="html"><![CDATA[<p>Enfin ! Je lâche un grand OUF de soulagement ! Le feu dans la cheminée est enfin allumé ! Je sais c&#8217;est puéril, mais chacun ses petites victoires. Grâce à cela au moment d&#8217;aller me coucher quand je ferais le bilan de ma journée je ressentirais une petite satisfaction tel le nolife qui vient d&#8217;accomplir une quête.</p>
 
 
@@ -1576,7 +1815,7 @@ Et encore &#8220;That is just the beginning&#8221;&#8230;&nbsp;!</p>
   <entry>
     <title type="html"><![CDATA[Startup Weekend à Minneapolis H-3]]></title>
     <link href="http://picsoung.github.io/blog/2010/11/19/startup-weekend-a-minneapolis-h-3/"/>
-    <updated>2010-11-19T12:22:00-08:00</updated>
+    <updated>2010-11-19T15:22:00-05:00</updated>
     <id>http://picsoung.github.io/blog/2010/11/19/startup-weekend-a-minneapolis-h-3</id>
     <content type="html"><![CDATA[<p><img src="http://startupweekend.org/images/sw_GEW.png" alt="" />Dans une petite dizaine de minutes je vais monter dans le bus qui m&#8217;emmènera à Minneapolis pour L&#8217;événement de la fin d&#8217;année&nbsp;: le S<a href="http://twincities.startupweekend.org/" hreflang="en">tartup Weekend</a>  :) J&#8217;ai acheté mon billet au début de mois d&#8217;octobre, j&#8217;aurais donc pu vous en parler avant, mais la procrastination aidant il n&#8217;en fut rien&#8230;</p>
 
@@ -1612,9 +1851,9 @@ Je très excité de vivre cette expérience :) C&#8217;est l&#8217;occasion de r
   
   <entry>
     <title type="html"><![CDATA[Quelques Photos]]></title>
-    <link href="http://picsoung.github.io/blog/2010/11/02/quelques-photos/"/>
-    <updated>2010-11-02T22:40:00-07:00</updated>
-    <id>http://picsoung.github.io/blog/2010/11/02/quelques-photos</id>
+    <link href="http://picsoung.github.io/blog/2010/11/03/quelques-photos/"/>
+    <updated>2010-11-03T01:40:00-04:00</updated>
+    <id>http://picsoung.github.io/blog/2010/11/03/quelques-photos</id>
     <content type="html"><![CDATA[<p>Les différentes galeries&nbsp;:</p>
 
 
@@ -1655,81 +1894,6 @@ Je très excité de vivre cette expérience :) C&#8217;est l&#8217;occasion de r
 
 <p>Les <a href="http://picsoung.github.io/index.php?gallery/Defeat-of-Jesse-James-Days">photos du festival</a> Defeat of Jesse James Day dont j&#8217;avais parlé <a href="http://picsoung.github.io/index.php?post/American-dream-DJJD">ici</a>
 <a href="http://picsoung.github.io/public/jessejames/DSC02034.JPG" title="DSC02034.JPG"><img src="http://picsoung.github.io/public/jessejames/.DSC02034_m.jpg" alt="DSC02034.JPG" style="float:right; margin: 0 0 1em 1em;" title="DSC02034.JPG, oct. 2010" /></a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[American Dream - French Cliché]]></title>
-    <link href="http://picsoung.github.io/blog/2010/10/07/american-dream-french-cliche/"/>
-    <updated>2010-10-07T21:42:00-07:00</updated>
-    <id>http://picsoung.github.io/blog/2010/10/07/american-dream-french-cliche</id>
-    <content type="html"><![CDATA[<p>Je leur ai demandé lors de ces présentations quel étaient leurs motivations pour apprendre le français et quel était le plus gros cliché qu&#8217;ils avaient sur notre pays. J&#8217;ai eu droit à pas mal de choses mais aujourd&#8217;hui c&#8217;était le pompon ! Je ne pouvais pas ne pas vous le raconter…</p>
-
-
-
-
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/3/3b/Baguette.png" alt="" /></p>
-
-
-
-
-<p>Évidemment j&#8217;ai eu droit aux classiques :</p>
-
-
-<ul>
-<li>C&#8217;est un beau pays</li>
-<li>J&#8217;aime la littérature française</li>
-<li>On mange bien (enfin sauf les grenouilles et les escargots)</li>
-<li>Les pâtisseries sont très bonnes</li>
-<li>Les Français n&#8217;aiment pas travailler (!!)</li>
-<li>Les Français sont romantiques (et oé bébé… ;-) m&#8217;enfin je ne vois pas bien d&#8217;où on tient cette réputation… il faut certainement remercier les poètes, les écrivains et les autres dramaturges qui nous ont précédés pour conter des amourettes…)</li>
-</ul>
-
-
-
-
-<p>Des originaux :</p>
-
-
-<ul>
-<li>J&#8217;ai choisi le Français car j&#8217;adore le film &#8220;un américain à Paris&#8221;, je l&#8217;ai regardé une fois par jour pendant un an… (!!)</li>
-</ul>
-
-
-
-
-<p>Et enfin des très spéciaux…</p>
-
-
-<ul>
-<li>Les Français aiment les moustaches qui rebiquent à la Dali</li>
-<li>Les Françaises ne se rasent pas.</li>
-</ul>
-
-
-
-
-<p>et PAF ! bim ! C’est lâché comme ça… S’enchaîne alors une conversation de quelques minutes dans le groupe. &#8220;Nan mais c&#8217;est vrai j&#8217;ai des amis Françaises, elles ont plein de poils sous les bras&#8221;, &#8220;Oui même que parfois leur copain se rase et pas elle.&#8221;
-Je reste spectateur les yeux écarquillés, surpris par ce que j&#8217;entends. J&#8217;étais loin d&#8217;imaginer que c&#8217;était l&#8217;image que l&#8217;on véhiculait.</p>
-
-
-
-
-<p>Très surréaliste… Mais j&#8217;apprécie la franchise et le courage de l&#8217;étudiante d&#8217;avoir pu sortir ça. Le plus marrant c&#8217;est quand même que c&#8217;est très contradictoire avec les autres images glamour qu&#8217;ils ont de l&#8217;Hexagone.
-Avis donc aux demoiselles : le monde vous regarde ! :P</p>
-
-
-
-
-<p>Ces groupes de discussions sont l&#8217;occasion de briser tous ces clichés à la lumière de leurs lectures sur les différences culturelles entre nos deux pays, mais celui-là, je ne vois pas bien comment on va pouvoir le briser…</p>
-
-
-
-
-<p>Voilà ma petite gaieté de la journée qui m&#8217;a bien fait rigoler :)
-<img src="http://upload.wikimedia.org/wikipedia/commons/3/3b/Baguette.png" alt="" />
-image wikmedia sous licence  CC</p>
 
 ]]></content>
   </entry>

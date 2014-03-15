@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Use Google Spreasheet and Firebase as Backend for Your Site - Hack and frogs</title>
+  <meta name="author" content="Nicolas Grenié">
+
+  
+  <meta name="description" content="Context Recently at 3scale, we had to re-build our customer page to make it more dynamic and easy to maintain. For now it was a classic Wordpress &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://picsoung.github.io/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Hack and frogs" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+ 
+  var disqus_developer = 1; // this would set it to developer mode 
+ </script> 
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Hack and frogs</a></h1>
+  
+    <h2>stories from a frog eater in the tech world</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:picsoung.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Use Google Spreasheet and Firebase as Backend for Your Site</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-14T20:58:02-04:00" pubdate data-updated="true">Mar 14<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://picsoung.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Context</h2>
+
+<p>Recently at <a href="http://3scale.net">3scale</a>, we had to re-build our customer page to make it more dynamic and easy to maintain. For now it was a classic Wordpress post, with html code in it. Really hard to maintain anytime we had to add a new customer or change its information.</p>
+
+<p>As I was in charge of the project, I immediately thought about all the magic stuff I played around in Meteor. Stuff like dynamic view update when data changes in database and Handlebar Templating.
+But part of the requirements was to build something using Wordpress without using any iframe. Meteor apps were out of the game…</p>
+
+<p>At that time an article about using Google Spreadsheet as a backend-system got a bit of hype, so we decided to try that.
+It has the advantage no not neccesitate any coding experience from the person maintaining the spreadsheet, perfect for this project.</p>
+
+<p>To make the page dynamic and reactive we added Handlebar-like templating and <a href="http://firebase.com">Firebase</a> support.
+In this article I want to walk you through a step-by-step tiny project so you could also use what&rsquo;ve done.</p>
+
+<h2>Project idea</h2>
+
+<p>I am running a great conference soon : MemeCon, a conference about memes. I built a nice one-page website and want my assistant to update the agenda easily.</p>
+
+<p>We let people submit they paper proposal using a Google form, and approved them manually so they could be added on the site.</p>
+
+<h2>What you need</h2>
+
+<ul>
+<li>a single page website, I personally used a great template found <a href="http://startbootstrap.com/one-page-wonder">on StartBootrap.com</a></li>
+<li>a Google Form and the response spreadsheet</li>
+<li>a <a href="http://zpr.io/gCex">Zapier</a> account (Free tier is enough for the demo)</li>
+<li>a <a href="http://firebase.com">Firebase</a> account (Free tier is enough for the demo)</li>
+</ul>
+
+
+<h2>Google Spreadsheet setup</h2>
+
+<p>On Google side, once you have configure the form you want, go to the corresponding response sheet (click <strong>View Responses</strong>).</p>
+
+<p>There we will add a column named <strong>Accepted</strong>. If a submission is Accepted we will put <strong>YES</strong> in this column. To make it easier to maintain, let&rsquo;s setup cells so it will only accept <strong>YES</strong> or <strong>NO</strong> as values.</p>
+
+<p>Go to <strong>Data>Validation</strong> menu.
+In <strong>Criteriat</strong> select <strong>From list items</strong> and put <em>YES, NO</em> in the field and click OK.
+Once you have done that, you can copy the cell to all the column.</p>
+
+<p>We should be done with Google Spreadsheet.</p>
+
+<h2>Firebase</h2>
+
+<p><a href="http://firebase.com">Firebase</a> is an amazing tool to build realtime applications and share the data with all the concurrent users. Here we are going to use it as a fasta backend infrastructure accesible in Javascript. We will only store accepted talks on <a href="http://firebase.com">Firebase</a>.</p>
+
+<p>Once your <a href="http://firebase.com">Firebase</a> is activated, you will need to create an app. Your app will be accessible at <code>YOURAPP.firebaseIO.com</code>.
+Click your app name to access <a href="http://firebase.com">Firebase</a> dashboard, called the Forge. That&rsquo;s where you will your data getting created in real-time. You can also create and modify data manually.</p>
+
+<p>Imagine the data stored as a tree, with roots and leafs. To organize our dataset we want to create a <strong>talks</strong> root.
+The best way is to great it under main root and add an empty leaf that you will delete after.
+To add or delete a node, hover on its name and either click <strong>+</strong> to add a child node or <strong>&ndash;</strong> to delete the node and its child.</p>
+
+<p>You should have something like this at this point.</p>
+
+<p><img class="left" src="/images/Forge_Firebase_Graphical_Debugger.png" width="350" height="350" title="image" alt="images"></p>
+
+<p>We are done with <a href="http://firebase.com">Firebase</a> configuration now.</p>
+
+<h2>Zapier</h2>
+
+<p>To export data from Google Spreadsheet to <a href="http://firebase.com">Firebase</a> I was too lazy to code and work with Google Webhooks so I found that Zapier will be a good intermediate to do that for me.
+If you are familiar with IFFT it&rsquo;s a similar product with more options.</p>
+
+<p>What the Zap will do: everytime a row in the spreadsheet it will add/update a record in <a href="http://firebase.com">Firebase</a>.</p>
+
+<ol>
+<li>Make a new Zap</li>
+<li>Select Google Doc for the left service, with <em>Updated Spreadsheet Row</em> as a trigger.</li>
+<li>Select <a href="http://firebase.com">Firebase</a> for the right service, with <em>Update/set record ID</em> as a trigger
+your should have something like this : <img class="left" src="/images/Editor_Zapier.png" title="image" alt="images"></li>
+<li>On step 2 and 3 of the Zap creation, you will have to log on your Google and <a href="http://firebase.com">Firebase</a> accounts, that should be pretty straight forward</li>
+<li>On step 4, you select the spreasheet and the sheet where the responses are</li>
+<li>We add a custom filter on <em>Accepted</em> column so text matches exactly <strong>YES</strong> to have only accepted submissions</li>
+<li>At step 5 you setup the path as <em>/talks/authorname/</em> so talks will be listed by their authorname under <strong>talks</strong> node
+fields to store part let you choose which information you want to store. It&rsquo;s also useful to rename column name.
+Mine looks like this <img class="left" src="/images/Zapier_step5.png" title="image" alt="images"></li>
+<li>You can test and name your Zap.</li>
+</ol>
+
+
+<p>Your test should pass and add a record to <a href="http://firebase.com">Firebase</a>. Check on the <a href="http://firebase.com">Firebase</a> forge to see if it worked.
+A common problem is that <a href="http://firebase.com">Firebase</a> does not like variable names with special character, and Google Spreadsheet column names are usually called <em>gsx$columnname</em>.</p>
+
+<p>One solution to that is to rename columns in the <em>Fields to store</em> part as described <a href="https://zapier.com/help/how-get-started-firebase/#common-problems-with-firebase">here</a></p>
+
+<h2>Website setup</h2>
+
+<p>Now that our data are stored on <a href="http://firebase.com">Firebase</a>, we need to get them and display them on the page.</p>
+
+<h3>Template</h3>
+
+<p>As we are using a static HTML file we can&rsquo;t use any Handlebar or Moustache templating system that need Node to precompile templates.</p>
+
+<p>Instead I used a solution called <a href="https://github.com/adammark/Markup.js/">Markup.js</a>.
+Include it in your project like you will do with any other javascript file.</p>
+
+<p>Somewhere in your page, where you want to display submissions add this piece of code</p>
+
+<p><code>&lt;div id="talks-list"&gt;&lt;/div&gt;</code></p>
+
+<p>Then add the end of the file add :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">&quot;talks-list-template&quot;</span> <span class="na">type=</span><span class="s">&quot;text/template&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="p"></span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">img</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette-image img-circle img-responsive pull-left&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width: 200px;height:200px;&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h3</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="p"></span>
+</span><span class='line'>                <span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-muted&quot;</span><span class="o">&gt;</span><span class="nx">by</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://twitter.com/&quot;</span><span class="o">&gt;</span><span class="p"></span><span class="o">&lt;</span><span class="err">/a&gt;&lt;/span&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="err">/h3&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">p</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;lead&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>                <span class="p"></span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-info&quot;</span><span class="o">&gt;</span><span class="p"></span><span class="o">&lt;</span><span class="err">/span&gt;&lt;/h4&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class='line'>      <span class="p"></span>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>First line initiate a template named <code>talks-list-template</code></p>
+
+<p>the <code>..</code> block corresponds to a forEach loop on an array <code>talks</code>, in this block each call to another &#8220; THING will be related to the current object in the forEach loop.</p>
+
+<p>For example, by calling <code>` we get the authorame of the current talk oject contained in</code>talks` array.</p>
+
+<p>Now we have to pass to this template the corresponding <code>talks</code> object.</p>
+
+<h3>Getting data</h3>
+
+<p>Add Firebase SDK to your project <code>&lt;script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'&gt;&lt;/script&gt;</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;READY&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">talks_array</span> <span class="o">=</span><span class="p">[];</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">talksDB</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Firebase</span><span class="p">(</span><span class="s1">&#39;https://YOURAPP.firebaseio.com/talks&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">talksDB</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">.</span><span class="nx">val</span><span class="p">()</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Error reading snapshot&#39;</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">.</span><span class="nx">val</span><span class="p">(),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="nx">talk</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">talks_array</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">talk</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>            <span class="nx">talks_array</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">(</span><span class="nx">talks_array</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">){</span><span class="k">return</span> <span class="nx">t</span><span class="p">.</span><span class="nx">time</span><span class="p">});</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;talks-list-template&quot;</span><span class="p">).</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">textContent</span><span class="p">;</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">talks</span><span class="o">:</span> <span class="nx">talks_array</span><span class="p">,</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#talks-list&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">Mark</span><span class="p">.</span><span class="nx">up</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">context</span><span class="p">));</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;DONE&quot;</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>We initiate the <code>talksDB</code> object we the data available at <code>https://YOURAPP.firebaseio.com/talks</code></li>
+<li>We read the data once. in the case of a realtime app you will use <code>on</code> instead</li>
+<li>Loop over the data to create an array</li>
+<li>(optional)Sort the array by date (need <a href="http://underscorejs.org">underscorejs</a>)</li>
+<li>Search for template <code>talks-list-template</code>, initiate <code>talks</code> array with the one just created.</li>
+<li>Apply in the div with id <code>talks-list</code> the template.</li>
+</ol>
+
+
+<h2>Usage</h2>
+
+<p>To try if your app is working well follow these steps:
+1. submit info on your Google Form.
+2. accept one submit
+3. Run Zapier&rsquo;s Zap manually
+4. Check that the talk is added in Firebase Forge
+5. Load your static html file</p>
+
+<p>You should see your talk proposal listed.
+In production you will only need to update the Google Spreadsheet to update your website.</p>
+
+<h2>What could be improve</h2>
+
+<h3>Zapier and Webhooks</h3>
+
+<p>If you are less lazy than myself you can find a way to go hover Zapier and hook google spreasheet directly to <a href="http://firebase.com">Firebase</a>.
+Also, Zapier zaps are run every 15minutes on free tier, so it takes 15minutes to actually update your website. But if you run the zap manually it&rsquo;s instant.</p>
+
+<h3>Security</h3>
+
+<p>By default you <a href="http://firebase.com">Firebase</a> data are readable and writable by anybody.
+To change that you can go to <a href="http://YOURAPP.firebaseio.com">http://YOURAPP.firebaseio.com</a> in the <code>Security</code> tab and change <code>".write": true</code> to <code>".write": false</code>. Zapier will still be able to write into it, but not random users navigating on your website.
+More about <a href="https://www.firebase.com/docs/security-quickstart.html">Firebase Security</a></p>
+
+<h3>Host your whole app on Firebase</h3>
+
+<p>Recently <a href="http://firebase.com">Firebase</a> launched a beta program to host static apps directly on their platform.
+Check the <a href="https://www.firebase.com/docs/hosting.html">Documentation</a> to learn more.</p>
+
+<p>It might be a great way to deploy prototype, and gets all the perks of <a href="http://firebase.com">Firebase</a> speed.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Nicolas Grenié</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-14T20:58:02-04:00" pubdate data-updated="true">Mar 14<span>th</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://picsoung.github.io/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/" data-via="picsoung" data-counturl="http://picsoung.github.io/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/27/webfaction-to-host-your-app/" title="Previous Post: Webfaction To Host Your App">&laquo; Webfaction To Host Your App</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/">Use Google Spreasheet and Firebase as Backend for Your Site</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/27/webfaction-to-host-your-app/">Webfaction to Host Your App</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/21/i-am-a-buspreneur-day-1/">I Am a Buspreneur - Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/06/i-am-on-a-bus/">I Am on a Bus!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/03/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2/">How to Create a Startup Webpage in Less Than 1 Hour - Part 2</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/picsoung">@picsoung</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'picsoung',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Nicolas Grenié -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nicolasgrenie';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://picsoung.github.io/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/';
+        var disqus_url = 'http://picsoung.github.io/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

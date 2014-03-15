@@ -9,7 +9,7 @@
   <meta name="author" content="Nicolas Grenié">
 
   
-  <meta name="description" content="Webhosting to be a giant mess with thousands of actors 10 years ago, you would have spend hours to find the perfect hosting company. If you did not &hellip;">
+  <meta name="description" content="Context Recently at 3scale, we had to re-build our customer page to make it more dynamic and easy to maintain. For now it was a classic Wordpress &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +74,275 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/">Use Google Spreasheet and Firebase as Backend for Your Site</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-14T20:58:02-04:00" pubdate data-updated="true">Mar 14<span>th</span>, 2014</time>
+        
+           | <a href="/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/#disqus_thread"
+             data-disqus-identifier="http://picsoung.github.io/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Context</h2>
+
+<p>Recently at <a href="http://3scale.net">3scale</a>, we had to re-build our customer page to make it more dynamic and easy to maintain. For now it was a classic Wordpress post, with html code in it. Really hard to maintain anytime we had to add a new customer or change its information.</p>
+
+<p>As I was in charge of the project, I immediately thought about all the magic stuff I played around in Meteor. Stuff like dynamic view update when data changes in database and Handlebar Templating.
+But part of the requirements was to build something using Wordpress without using any iframe. Meteor apps were out of the game…</p>
+
+<p>At that time an article about using Google Spreadsheet as a backend-system got a bit of hype, so we decided to try that.
+It has the advantage no not neccesitate any coding experience from the person maintaining the spreadsheet, perfect for this project.</p>
+
+<p>To make the page dynamic and reactive we added Handlebar-like templating and <a href="http://firebase.com">Firebase</a> support.
+In this article I want to walk you through a step-by-step tiny project so you could also use what&rsquo;ve done.</p>
+
+<h2>Project idea</h2>
+
+<p>I am running a great conference soon : MemeCon, a conference about memes. I built a nice one-page website and want my assistant to update the agenda easily.</p>
+
+<p>We let people submit they paper proposal using a Google form, and approved them manually so they could be added on the site.</p>
+
+<h2>What you need</h2>
+
+<ul>
+<li>a single page website, I personally used a great template found <a href="http://startbootstrap.com/one-page-wonder">on StartBootrap.com</a></li>
+<li>a Google Form and the response spreadsheet</li>
+<li>a <a href="http://zpr.io/gCex">Zapier</a> account (Free tier is enough for the demo)</li>
+<li>a <a href="http://firebase.com">Firebase</a> account (Free tier is enough for the demo)</li>
+</ul>
+
+
+<h2>Google Spreadsheet setup</h2>
+
+<p>On Google side, once you have configure the form you want, go to the corresponding response sheet (click <strong>View Responses</strong>).</p>
+
+<p>There we will add a column named <strong>Accepted</strong>. If a submission is Accepted we will put <strong>YES</strong> in this column. To make it easier to maintain, let&rsquo;s setup cells so it will only accept <strong>YES</strong> or <strong>NO</strong> as values.</p>
+
+<p>Go to <strong>Data>Validation</strong> menu.
+In <strong>Criteriat</strong> select <strong>From list items</strong> and put <em>YES, NO</em> in the field and click OK.
+Once you have done that, you can copy the cell to all the column.</p>
+
+<p>We should be done with Google Spreadsheet.</p>
+
+<h2>Firebase</h2>
+
+<p><a href="http://firebase.com">Firebase</a> is an amazing tool to build realtime applications and share the data with all the concurrent users. Here we are going to use it as a fasta backend infrastructure accesible in Javascript. We will only store accepted talks on <a href="http://firebase.com">Firebase</a>.</p>
+
+<p>Once your <a href="http://firebase.com">Firebase</a> is activated, you will need to create an app. Your app will be accessible at <code>YOURAPP.firebaseIO.com</code>.
+Click your app name to access <a href="http://firebase.com">Firebase</a> dashboard, called the Forge. That&rsquo;s where you will your data getting created in real-time. You can also create and modify data manually.</p>
+
+<p>Imagine the data stored as a tree, with roots and leafs. To organize our dataset we want to create a <strong>talks</strong> root.
+The best way is to great it under main root and add an empty leaf that you will delete after.
+To add or delete a node, hover on its name and either click <strong>+</strong> to add a child node or <strong>&ndash;</strong> to delete the node and its child.</p>
+
+<p>You should have something like this at this point.</p>
+
+<p><img class="left" src="/images/Forge_Firebase_Graphical_Debugger.png" width="350" height="350" title="image" alt="images"></p>
+
+<p>We are done with <a href="http://firebase.com">Firebase</a> configuration now.</p>
+
+<h2>Zapier</h2>
+
+<p>To export data from Google Spreadsheet to <a href="http://firebase.com">Firebase</a> I was too lazy to code and work with Google Webhooks so I found that Zapier will be a good intermediate to do that for me.
+If you are familiar with IFFT it&rsquo;s a similar product with more options.</p>
+
+<p>What the Zap will do: everytime a row in the spreadsheet it will add/update a record in <a href="http://firebase.com">Firebase</a>.</p>
+
+<ol>
+<li>Make a new Zap</li>
+<li>Select Google Doc for the left service, with <em>Updated Spreadsheet Row</em> as a trigger.</li>
+<li>Select <a href="http://firebase.com">Firebase</a> for the right service, with <em>Update/set record ID</em> as a trigger
+your should have something like this : <img class="left" src="/images/Editor_Zapier.png" title="image" alt="images"></li>
+<li>On step 2 and 3 of the Zap creation, you will have to log on your Google and <a href="http://firebase.com">Firebase</a> accounts, that should be pretty straight forward</li>
+<li>On step 4, you select the spreasheet and the sheet where the responses are</li>
+<li>We add a custom filter on <em>Accepted</em> column so text matches exactly <strong>YES</strong> to have only accepted submissions</li>
+<li>At step 5 you setup the path as <em>/talks/authorname/</em> so talks will be listed by their authorname under <strong>talks</strong> node
+fields to store part let you choose which information you want to store. It&rsquo;s also useful to rename column name.
+Mine looks like this <img class="left" src="/images/Zapier_step5.png" title="image" alt="images"></li>
+<li>You can test and name your Zap.</li>
+</ol>
+
+
+<p>Your test should pass and add a record to <a href="http://firebase.com">Firebase</a>. Check on the <a href="http://firebase.com">Firebase</a> forge to see if it worked.
+A common problem is that <a href="http://firebase.com">Firebase</a> does not like variable names with special character, and Google Spreadsheet column names are usually called <em>gsx$columnname</em>.</p>
+
+<p>One solution to that is to rename columns in the <em>Fields to store</em> part as described <a href="https://zapier.com/help/how-get-started-firebase/#common-problems-with-firebase">here</a></p>
+
+<h2>Website setup</h2>
+
+<p>Now that our data are stored on <a href="http://firebase.com">Firebase</a>, we need to get them and display them on the page.</p>
+
+<h3>Template</h3>
+
+<p>As we are using a static HTML file we can&rsquo;t use any Handlebar or Moustache templating system that need Node to precompile templates.</p>
+
+<p>Instead I used a solution called <a href="https://github.com/adammark/Markup.js/">Markup.js</a>.
+Include it in your project like you will do with any other javascript file.</p>
+
+<p>Somewhere in your page, where you want to display submissions add this piece of code</p>
+
+<p><code>&lt;div id="talks-list"&gt;&lt;/div&gt;</code></p>
+
+<p>Then add the end of the file add :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">&quot;talks-list-template&quot;</span> <span class="na">type=</span><span class="s">&quot;text/template&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="p"></span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">img</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette-image img-circle img-responsive pull-left&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width: 200px;height:200px;&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h3</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="p"></span>
+</span><span class='line'>                <span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-muted&quot;</span><span class="o">&gt;</span><span class="nx">by</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://twitter.com/&quot;</span><span class="o">&gt;</span><span class="p"></span><span class="o">&lt;</span><span class="err">/a&gt;&lt;/span&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="err">/h3&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">p</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;lead&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>                <span class="p"></span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-info&quot;</span><span class="o">&gt;</span><span class="p"></span><span class="o">&lt;</span><span class="err">/span&gt;&lt;/h4&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class='line'>      <span class="p"></span>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>First line initiate a template named <code>talks-list-template</code></p>
+
+<p>the <code>..</code> block corresponds to a forEach loop on an array <code>talks</code>, in this block each call to another &#8220; THING will be related to the current object in the forEach loop.</p>
+
+<p>For example, by calling <code>` we get the authorame of the current talk oject contained in</code>talks` array.</p>
+
+<p>Now we have to pass to this template the corresponding <code>talks</code> object.</p>
+
+<h3>Getting data</h3>
+
+<p>Add Firebase SDK to your project <code>&lt;script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'&gt;&lt;/script&gt;</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;READY&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">talks_array</span> <span class="o">=</span><span class="p">[];</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">talksDB</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Firebase</span><span class="p">(</span><span class="s1">&#39;https://YOURAPP.firebaseio.com/talks&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">talksDB</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">.</span><span class="nx">val</span><span class="p">()</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Error reading snapshot&#39;</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">.</span><span class="nx">val</span><span class="p">(),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="nx">talk</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">talks_array</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">talk</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>            <span class="nx">talks_array</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">(</span><span class="nx">talks_array</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">){</span><span class="k">return</span> <span class="nx">t</span><span class="p">.</span><span class="nx">time</span><span class="p">});</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;talks-list-template&quot;</span><span class="p">).</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">textContent</span><span class="p">;</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">talks</span><span class="o">:</span> <span class="nx">talks_array</span><span class="p">,</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#talks-list&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">Mark</span><span class="p">.</span><span class="nx">up</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">context</span><span class="p">));</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;DONE&quot;</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>We initiate the <code>talksDB</code> object we the data available at <code>https://YOURAPP.firebaseio.com/talks</code></li>
+<li>We read the data once. in the case of a realtime app you will use <code>on</code> instead</li>
+<li>Loop over the data to create an array</li>
+<li>(optional)Sort the array by date (need <a href="http://underscorejs.org">underscorejs</a>)</li>
+<li>Search for template <code>talks-list-template</code>, initiate <code>talks</code> array with the one just created.</li>
+<li>Apply in the div with id <code>talks-list</code> the template.</li>
+</ol>
+
+
+<h2>Usage</h2>
+
+<p>To try if your app is working well follow these steps:
+1. submit info on your Google Form.
+2. accept one submit
+3. Run Zapier&rsquo;s Zap manually
+4. Check that the talk is added in Firebase Forge
+5. Load your static html file</p>
+
+<p>You should see your talk proposal listed.
+In production you will only need to update the Google Spreadsheet to update your website.</p>
+
+<h2>What could be improve</h2>
+
+<h3>Zapier and Webhooks</h3>
+
+<p>If you are less lazy than myself you can find a way to go hover Zapier and hook google spreasheet directly to <a href="http://firebase.com">Firebase</a>.
+Also, Zapier zaps are run every 15minutes on free tier, so it takes 15minutes to actually update your website. But if you run the zap manually it&rsquo;s instant.</p>
+
+<h3>Security</h3>
+
+<p>By default you <a href="http://firebase.com">Firebase</a> data are readable and writable by anybody.
+To change that you can go to <a href="http://YOURAPP.firebaseio.com">http://YOURAPP.firebaseio.com</a> in the <code>Security</code> tab and change <code>".write": true</code> to <code>".write": false</code>. Zapier will still be able to write into it, but not random users navigating on your website.
+More about <a href="https://www.firebase.com/docs/security-quickstart.html">Firebase Security</a></p>
+
+<h3>Host your whole app on Firebase</h3>
+
+<p>Recently <a href="http://firebase.com">Firebase</a> launched a beta program to host static apps directly on their platform.
+Check the <a href="https://www.firebase.com/docs/hosting.html">Documentation</a> to learn more.</p>
+
+<p>It might be a great way to deploy prototype, and gets all the perks of <a href="http://firebase.com">Firebase</a> speed.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/02/27/webfaction-to-host-your-app/">Webfaction to Host Your App</a></h1>
     
     
@@ -90,7 +359,7 @@
   
 
 
-<time datetime="2014-02-27T00:00:00-08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2014</time>
+<time datetime="2014-02-27T00:00:00-05:00" pubdate data-updated="true"></time>
         
            | <a href="/blog/2014/02/27/webfaction-to-host-your-app/#disqus_thread"
              data-disqus-identifier="http://picsoung.github.io/blog/2014/02/27/webfaction-to-host-your-app/">Comments</a>
@@ -146,7 +415,7 @@ Happy Coding !</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/20/i-am-a-buspreneur-day-1/">I Am a Buspreneur - Day 1</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/03/21/i-am-a-buspreneur-day-1/">I Am a Buspreneur - Day 1</a></h1>
     
     
       <p class="meta">
@@ -162,10 +431,10 @@ Happy Coding !</p>
   
 
 
-<time datetime="2012-03-20T23:42:00-07:00" pubdate data-updated="true">Mar 20<span>th</span>, 2012</time>
+<time datetime="2012-03-21T02:42:00-04:00" pubdate data-updated="true">Mar 21<span>st</span>, 2012</time>
         
-           | <a href="/blog/2012/03/20/i-am-a-buspreneur-day-1/#disqus_thread"
-             data-disqus-identifier="http://picsoung.github.io/blog/2012/03/20/i-am-a-buspreneur-day-1/">Comments</a>
+           | <a href="/blog/2012/03/21/i-am-a-buspreneur-day-1/#disqus_thread"
+             data-disqus-identifier="http://picsoung.github.io/blog/2012/03/21/i-am-a-buspreneur-day-1/">Comments</a>
         
       </p>
     
@@ -307,7 +576,7 @@ Kinetic.ly - Tools for motion analysis</p>
   
 
 
-<time datetime="2012-03-06T01:00:00-08:00" pubdate data-updated="true">Mar 6<span>th</span>, 2012</time>
+<time datetime="2012-03-06T04:00:00-05:00" pubdate data-updated="true">Mar 6<span>th</span>, 2012</time>
         
            | <a href="/blog/2012/03/06/i-am-on-a-bus/#disqus_thread"
              data-disqus-identifier="http://picsoung.github.io/blog/2012/03/06/i-am-on-a-bus/">Comments</a>
@@ -452,7 +721,7 @@ I just know the basic elevator pitch about the <a href="http://StartupBus.com" h
   
 
 
-<time datetime="2012-02-03T16:47:00-08:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2012</time>
+<time datetime="2012-02-03T19:47:00-05:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2012</time>
         
            | <a href="/blog/2012/02/03/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2/#disqus_thread"
              data-disqus-identifier="http://picsoung.github.io/blog/2012/02/03/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2/">Comments</a>
@@ -546,7 +815,7 @@ You can find the first part of the article about which tools we are going to use
   
 
 
-<time datetime="2011-11-20T18:25:00-08:00" pubdate data-updated="true">Nov 20<span>th</span>, 2011</time>
+<time datetime="2011-11-20T21:25:00-05:00" pubdate data-updated="true">Nov 20<span>th</span>, 2011</time>
         
            | <a href="/blog/2011/11/20/i-3-apis/#disqus_thread"
              data-disqus-identifier="http://picsoung.github.io/blog/2011/11/20/i-3-apis/">Comments</a>
@@ -700,7 +969,7 @@ There are also API directories like <a href="http://programmableweb.com" hreflan
   
 
 
-<time datetime="2011-10-30T18:14:00-07:00" pubdate data-updated="true">Oct 30<span>th</span>, 2011</time>
+<time datetime="2011-10-30T21:14:00-04:00" pubdate data-updated="true">Oct 30<span>th</span>, 2011</time>
         
            | <a href="/blog/2011/10/30/disable-comment-box-on-facebook-like-button/#disqus_thread"
              data-disqus-identifier="http://picsoung.github.io/blog/2011/10/30/disable-comment-box-on-facebook-like-button/">Comments</a>
@@ -788,7 +1057,7 @@ Have fun &#8220;hacking&#8221; Facebook :)</p>
   
 
 
-<time datetime="2011-08-28T20:26:00-07:00" pubdate data-updated="true">Aug 28<span>th</span>, 2011</time>
+<time datetime="2011-08-28T23:26:00-04:00" pubdate data-updated="true">Aug 28<span>th</span>, 2011</time>
         
            | <a href="/blog/2011/08/28/in-hackathon-we-trust/#disqus_thread"
              data-disqus-identifier="http://picsoung.github.io/blog/2011/08/28/in-hackathon-we-trust/">Comments</a>
@@ -958,7 +1227,7 @@ People are coming to work on their projects or to build new stuff during the eve
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/08/18/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/">Students, 3 Reasons Why You Should Attend Web 2.0 Expo NYC in Fall (65% Discount)</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/08/19/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/">Students, 3 Reasons Why You Should Attend Web 2.0 Expo NYC in Fall (65% Discount)</a></h1>
     
     
       <p class="meta">
@@ -974,10 +1243,10 @@ People are coming to work on their projects or to build new stuff during the eve
   
 
 
-<time datetime="2011-08-18T23:11:00-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2011</time>
+<time datetime="2011-08-19T02:11:00-04:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
         
-           | <a href="/blog/2011/08/18/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/#disqus_thread"
-             data-disqus-identifier="http://picsoung.github.io/blog/2011/08/18/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/">Comments</a>
+           | <a href="/blog/2011/08/19/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/#disqus_thread"
+             data-disqus-identifier="http://picsoung.github.io/blog/2011/08/19/students-3-reasons-why-you-should-attend-web-2-0-expo-nyc-in-fall-65-discount/">Comments</a>
         
       </p>
     
@@ -1133,7 +1402,7 @@ And I bet NYC is a nice city too, even if I never been&#8230;</p>
   
 
 
-<time datetime="2011-06-02T14:56:00-07:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2011</time>
+<time datetime="2011-06-02T17:56:00-04:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2011</time>
         
            | <a href="/blog/2011/06/02/annee-a-st-olaf-le-bilan-par-quoi-commencer/#disqus_thread"
              data-disqus-identifier="http://picsoung.github.io/blog/2011/06/02/annee-a-st-olaf-le-bilan-par-quoi-commencer/">Comments</a>
@@ -1192,91 +1461,6 @@ And I bet NYC is a nice city too, even if I never been&#8230;</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/27/web-2-0-expo-here-i-go/">Web 2.0 Expo Here I Go !</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-27T22:48:00-07:00" pubdate data-updated="true">Mar 27<span>th</span>, 2011</time>
-        
-           | <a href="/blog/2011/03/27/web-2-0-expo-here-i-go/#disqus_thread"
-             data-disqus-identifier="http://picsoung.github.io/blog/2011/03/27/web-2-0-expo-here-i-go/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/public/illus_billets/web2expo_4c-300x147.jpg" alt="web2expo_4c-300x147.jpg" style="display:block; margin:0 auto;" title="web2expo_4c-300x147.jpg, mar. 2011" /></p>
-
-
-
-
-<p>On va se faire un petit post en français pour changer. Enfin c&#8217;est surtout que je suis pris d&#8217;un sentiment de flémingite aiguë pour me concentrer et rédiger en anglais.
-Je suis donc arrivé à San Francisco jeudi dernier, directement depuis la neige de Minneapolis au climat humide et légèrement pluvieux de la Californie. Qu&#8217;elle libération !
-Bien que je fusse en vacances (officiellement jusqu&#8217;à ce soir) c&#8217;est bel et bien dans un esprit &#8220;business&#8221; et &#8220;professionnel&#8221; que je me rends dans la Sillicon Valley.
-Évidemment l&#8217;objectif ultime est de décrocher un stage dans cette mégapole de geeks. Mais je viens également dans l&#8217;envie d&#8217;en apprendre plus sur cette &#8220;startup-mania&#8221;, cet esprit d&#8217;entreprendre et plus généralement cette envie d&#8217;avoir envie qui nous fait défaut en France.
-Pour me confronter à ce monde-là j&#8217;ai décidé d&#8217;assister à mon premier congrès professionnel : la <a href="http://www.web2expo.com/webexsf2011" hreflang="en">Web 2.0 Expo</a>. C&#8217;est une des plus grosses conférences américaines à propos du monde des réseaux sociaux, et du web d&#8217;aujourd&#8217;hui. Si vous voulez un aperçu du web 2.0 je vous propose cette formidable intervention de Frédéric Lefebvre :</p>
-
-
-
-
-<iframe title="YouTube video player" width="480" height="390" src="http://www.youtube.com/embed/xQF5BJMRQkw" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<p>Effectivement ça ne veut pas dire grand-chose… le web 2.0 c&#8217;est tout et rien à la fois, c&#8217;est aujourd&#8217;hui comme c&#8217;est hier… ou alors on se dit juste que c&#8217;est le nom de la conf et basta :P</p>
-
-
-
-
-<p>Pendant ces 4 jours de congrès j&#8217;essayerais de jongler entre confs techniques et celle orientée business, tout en essayant évidemment de rencontrer de nouvelles personnes et d&#8217;en connaître un peu plus sur les tendances actuelles.</p>
-
-
-
-
-<p>Je suis très enthousiaste à l&#8217;idée d&#8217;assister à tout ça, mais surtout d&#8217;aller au Moscone center ! LE temple des WWDC d&#8217;Apple… mon rêve de gamin de 10ans, même si ce n’est pas pour une conférence des développeurs Apple. Pour une prochaine fois :)</p>
-
-
-
-
-<p>Je vous laisse il me reste à planifier mon planning de demain, je pense m&#8217;orienter vers l&#8217;atelier sur toute une journée à propos de Ruby On Rails :)</p>
-
-
-
-
-<p>Je vais essayer de maintenir le contact ici et d&#8217;écrire autant que possible mais rien ne sera évident avec toutes choses à faire !</p>
-
-
-
-
-<p>Lien&nbsp;: <a href="http://www.web2expo.com/webexsf2011">Web 2.0 expo 2011</a>
-Mon projet de startup <a href="http://DitchTheTourBus.com">DitchTheTourBus</a></p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1292,11 +1476,15 @@ Mon projet de startup <a href="http://DitchTheTourBus.com">DitchTheTourBus</a></
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/14/use-google-spreasheet-and-firebase-as-backend-for-your-site/">Use Google Spreasheet and Firebase as Backend for Your Site</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/27/webfaction-to-host-your-app/">Webfaction to Host Your App</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/03/20/i-am-a-buspreneur-day-1/">I Am a Buspreneur - Day 1</a>
+        <a href="/blog/2012/03/21/i-am-a-buspreneur-day-1/">I Am a Buspreneur - Day 1</a>
       </li>
     
       <li class="post">
@@ -1305,10 +1493,6 @@ Mon projet de startup <a href="http://DitchTheTourBus.com">DitchTheTourBus</a></
     
       <li class="post">
         <a href="/blog/2012/02/03/how-to-create-a-startup-webpage-in-less-than-1-hour-part-2/">How to Create a Startup Webpage in Less Than 1 Hour - Part 2</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/11/20/i-3-apis/">I <3 APIs!</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Geekeries | Hack and frogs]]></title>
   <link href="http://picsoung.github.io/blog/categories/geekeries/atom.xml" rel="self"/>
   <link href="http://picsoung.github.io/"/>
-  <updated>2014-02-27T22:21:04-08:00</updated>
+  <updated>2014-03-14T21:00:17-04:00</updated>
   <id>http://picsoung.github.io/</id>
   <author>
     <name><![CDATA[Nicolas Grenié]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Disable comment box on Facebook like button]]></title>
     <link href="http://picsoung.github.io/blog/2011/10/30/disable-comment-box-on-facebook-like-button/"/>
-    <updated>2011-10-30T18:14:00-07:00</updated>
+    <updated>2011-10-30T21:14:00-04:00</updated>
     <id>http://picsoung.github.io/blog/2011/10/30/disable-comment-box-on-facebook-like-button</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/1-Facebook.png" alt="1-Facebook.png" title="1-Facebook.png, oct. 2011" /></p>
 
@@ -74,7 +74,7 @@ Have fun "hacking" Facebook :)</p>
   <entry>
     <title type="html"><![CDATA[Create a startup webpage in less than 1 hour - Tools]]></title>
     <link href="http://picsoung.github.io/blog/2011/03/14/create-a-startup-webpage-in-less-than-1-hour-tools/"/>
-    <updated>2011-03-14T20:10:00-07:00</updated>
+    <updated>2011-03-14T23:10:00-04:00</updated>
     <id>http://picsoung.github.io/blog/2011/03/14/create-a-startup-webpage-in-less-than-1-hour-tools</id>
     <content type="html"><![CDATA[<p>As a <a href="http://startupweekend.org/" hreflang="en" title="StartupWeekend">StartupWeekend</a> alumni I know there are many things you have to do during the weekend in to order to present a nice demo to the audience. One of the important things to do is building a website to present your product and get known on the web.
 I wish I had at that time an article with a compilation of tools to use and an easy-to-follow tutorial about how to use these tools.
@@ -208,9 +208,9 @@ If thiq is not your case you can still sign up on <a href="http://launchrock.com
   
   <entry>
     <title type="html"><![CDATA[Geek - Où je suis passé à Cloudflare]]></title>
-    <link href="http://picsoung.github.io/blog/2010/10/05/geek-ou-je-suis-passe-a-cloudflare/"/>
-    <updated>2010-10-05T21:24:00-07:00</updated>
-    <id>http://picsoung.github.io/blog/2010/10/05/geek-ou-je-suis-passe-a-cloudflare</id>
+    <link href="http://picsoung.github.io/blog/2010/10/06/geek-ou-je-suis-passe-a-cloudflare/"/>
+    <updated>2010-10-06T00:24:00-04:00</updated>
+    <id>http://picsoung.github.io/blog/2010/10/06/geek-ou-je-suis-passe-a-cloudflare</id>
     <content type="html"><![CDATA[<p><img src="http://picsoung.github.io/public/illus_billets/.cloudfare_homepage_s.jpg" alt="cloudflare home" style="float:right; margin: 0 0 1em 1em;" title="cloudfare home, oct. 2010" />Vous n’avez certainement rien remarqué et c’est bien normal… J'ai découvert Cloudflare après la lecture d'un <a href="http://fr.techcrunch.com/2010/09/30/techcrunch-disrupt-ce-qui-sest-passe-a-lautre-cote-de-latlantique-la-meilleure-start-up/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+francaistechcrunch+%28TechCrunch+en+Francais%29" hreflang="fr">article</a> de Techcrunch France à propos de la conférence Techcrunch Disrupt qui s'est déroulée du 27 au 29 septembre dernier à San Francisco. Le principe de ces trois jours de conférence est de réunir start-up et entrepreneurs du web afin de faire connaître les projets innovants en recherche de fonds. À cette occasion quelques boîtes françaises (<a href="http://dismoiou.fr/" hreflang="fr">Dismoiou</a>, <a href="http://www.boosket.com/en" hreflang="en">Boostket</a>, <a href="http://kwaga.com/" hreflang="fr">Kwaga</a>, <a href="http://www.stribe.com/" hreflang="fr">Stribe</a> et<a href="http://www.wozaik.com/bienvenue" hreflang="fr"> Wozaik</a>) avaient fait le voyage mais n'ont malheureusement pas remportées la récompense de 50 000 $ attribuée à la meilleure des 27 start-up sélectionnées.</p>
 
 
@@ -270,9 +270,9 @@ On notera également que les concepteurs de Cloudflare font parti du projet Proj
   
   <entry>
     <title type="html"><![CDATA[Tron Legacy, la BO et l'ASCII Art]]></title>
-    <link href="http://picsoung.github.io/blog/2010/09/07/tron-legacy-la-bo-et-l-ascii-art/"/>
-    <updated>2010-09-07T23:30:00-07:00</updated>
-    <id>http://picsoung.github.io/blog/2010/09/07/tron-legacy-la-bo-et-l-ascii-art</id>
+    <link href="http://picsoung.github.io/blog/2010/09/08/tron-legacy-la-bo-et-l-ascii-art/"/>
+    <updated>2010-09-08T02:30:00-04:00</updated>
+    <id>http://picsoung.github.io/blog/2010/09/08/tron-legacy-la-bo-et-l-ascii-art</id>
     <content type="html"><![CDATA[<p>Nan toujours pas&nbsp;? Arf vraiment dommage car ce film fait partie de la multitudes de film geek à voir. L'original Tron est sorti en 1982. C'est l'histoire toute bête d'un programmeur qui rentre sans son ordinateur pour y trouver ses programmes. À l'intérieur, un programme initialement prévu pour jouer aux échecs s'est développé et a pris le contrôle. Le synopsis est assez simple mais enrobé d'un visuel totalement futuriste et hors du commun. Une belle métaphore de l'ordinateur et du transit des informations.</p>
 
 
@@ -324,7 +324,7 @@ On notera également que les concepteurs de Cloudflare font parti du projet Proj
   <entry>
     <title type="html"><![CDATA[Mir:ror mon beau mir:ror]]></title>
     <link href="http://picsoung.github.io/blog/2010/06/18/mir-ror-mon-beau-mir-ror/"/>
-    <updated>2010-06-18T11:14:00-07:00</updated>
+    <updated>2010-06-18T14:14:00-04:00</updated>
     <id>http://picsoung.github.io/blog/2010/06/18/mir-ror-mon-beau-mir-ror</id>
     <content type="html"><![CDATA[<p>Non pas que je rêve de jouer à faire comme la marâtre de Blanche Neige qui questionnait son miroir à la recherche de la beauté... Mais j'ai un miroir intelligent moi :) Un mir:ror&nbsp;! Pour les incultes c'est une espèce de coupelle de plastique qui renferme un lecteur de puces RFID. Lecteur de quoi&nbsp;? De Réfidé&nbsp;! ces petites puces que l'on commence à trouver un peu partout, dans les pass Optymo ou Navigo, les badges d'accès ou encore dans le passeport biométrique des chats. Au Japon elles sont déjà très répandues.</p>
 
