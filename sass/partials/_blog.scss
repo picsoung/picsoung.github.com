@@ -42,6 +42,7 @@ article {
     font-size: 2.0em; font-style: italic;
     line-height: 1.3em;
   }
+
   img, video, .flash-video, .caption-wrapper {
      @extend .flex-content;
      @extend .basic-alignment;
@@ -61,6 +62,7 @@ article {
        display: block;
      }
   }
+  
   video, .flash-video { margin: 0 auto 1.5em; }
   video { display: block; width: 100%; }
   .flash-video {
