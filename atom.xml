@@ -4,7 +4,7 @@
   <title><![CDATA[Hack and frogs]]></title>
   <link href="http://picsoung.github.io/atom.xml" rel="self"/>
   <link href="http://picsoung.github.io/"/>
-  <updated>2014-03-27T23:41:52-07:00</updated>
+  <updated>2014-04-03T12:58:18-07:00</updated>
   <id>http://picsoung.github.io/</id>
   <author>
     <name><![CDATA[Nicolas Grenié]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My Tech Spring Break in Miami]]></title>
+    <link href="http://picsoung.github.io/blog/2014/04/03/my-tech-spring-break-in-miami/"/>
+    <updated>2014-04-03T10:51:13-07:00</updated>
+    <id>http://picsoung.github.io/blog/2014/04/03/my-tech-spring-break-in-miami</id>
+    <content type="html"><![CDATA[<p>I might not be the typical college kid… For my first Spring Break in the US, 3 years ago while I was exchanging at St. Olaf College, I took all the money I could have spent on booze to go visit San Francisco. I took two weeks in SF to discover the tech scene. Instead of getting drunk and experiencing a part of American culture, I found an internship and stared my startup life.</p>
+
+<p>I just realized that I almost did the same thing this year. After riding the StartupBus and enjoying a crazy SXSW, I spent a week in Miami to check out their startup scene.</p>
+
+<p>If &ldquo;Miami&rdquo; and &ldquo;startup&rdquo; are words that you would not put together, you should definitely change your mind. There is a tech scene in south Florida, and all the elements are falling to place to become a successful hub for South West US and Latin America.</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='http://picsoung.github.io/images/miami-tech-spring-break/miami_landscape.jpg' width='355' height='200' title='The beach a block away from my hostel'><span class='caption-text'>The beach a block away from my hostel</span></span></p>
+
+<p>I want to take the opportunity with this blog post to showcase of the great startups I met there.</p>
+
+<h3>Senzari</h3>
+
+<p><img src="http://picsoung.github.io/images/miami-tech-spring-break/musicgraph_logo.png"></p>
+
+<p>One of the biggest players of the local community, <a href="http://senzari.com">Senzari</a>, has a team working on a new product they just launched: <a href="https://developer.musicgraph.com">MusicGraph</a>. <a href="https://developer.musicgraph.com">MusicGraph</a> is at the core of their other product, WahWah radio.</p>
+
+<p>It&rsquo;s a graph API (just like Facebook graph) around music. One of the most interesting features of the API is the recommendation engine. You could integrate in your app something as powerful as the Spotify recommendation engine just by calling the API.
+They also provide you all the social information of an artist.
+If you are building a service around music, you definitively should check what MusicGraph is doing.
+<a href="https://developer.musicgraph.com">MusicGraph</a></p>
+
+<h3>Kairos</h3>
+
+<p><img src="http://picsoung.github.io/images/miami-tech-spring-break/kairos_logo.png"></p>
+
+<p>During my first hackathon ever, back in 2011, I built an app using the awesome Face.com API. They later got acquired by Facebook and the facial recognition API seat was empty for a while, until <a href="http://kairos.io">Kairos</a> came into the game. The API is the second product they launched after Kairos TimeClock, an iPad-base timeclock that uses facial recognition to identify employees. Possibilities are end-less, retailers could build loyalty programs, photo apps could use it to identify people… It&rsquo;s simple and easy to hack, take a look at Kairos, an alumni of <a href="http://newmeaccelerator.com">NewME</a> accelerator, a residential technology startup accelerator for businesses led by underrepresented groups (African-Americans, Latinos, &amp; Women) in the technology industry.</p>
+
+<h3>Flomio</h3>
+
+<p><img src="http://picsoung.github.io/images/miami-tech-spring-break/flomio_logo.png"></p>
+
+<p>I found <a href="http://flomio.com">Flomio</a> on <a href="https://angel.co/flomio">Angelist</a> and I had a chance to meet one of their founders, <a href="http://www.linkedin.com/in/richardgrundy">Richard Grundy</a>. They build tools and apps around NFC. For example, they help event organizers with NFC enabled wristbands.
+As soon as the wristband is registered and tagged to the readers in the venue, organizers could see who is &ldquo;checking in&rdquo; where and get analytics about their events. They also built a photo booth where it identifies people using the wristband and then posts the picture on the social network.</p>
+
+<p>Could you image that they also raised $96,000 on Kickstarter to create the first NFC reader for iOS devices, <a href="https://www.kickstarter.com/projects/flomio/flojack-nfc-for-ipad-and-iphone">Flojack</a> out of Miami. We sat for almost an hour and talked about their vision and the difficulties of building a hardware startup in Miami. I am definitively looking forward for more to come from this team.</p>
+
+<p>Not to mention <a href="http://flomio.com">Flomio</a> is a <a href="www.techstars.com/%E2%80%8E">Techstars</a> alumni.</p>
+
+<h3>Muzik</h3>
+
+<p><img src="http://picsoung.github.io/images/miami-tech-spring-break/muzik_logo.png"></p>
+
+<p>I met the Muzik team at SXSW during <a href="http://slashathon.com">Slashathon</a> that we sponsored with <a href="http://3scale.net">3scale</a>. They built the first hackable headphones, and it&rsquo;s just amazing ! The well designed bluetooth headphones are a concentration of high technology. It has a touch gesture surface so you can swipe to control volume and go through your playlist. 4 hotkeys could be programmed, like sending a tweet, it even has a accelerometer and proximity sensor to detect when you put the headset on your neck and pauses your music.</p>
+
+<p>It&rsquo;s been 2 weeks that I am using them everyday and I love it. They sync perfectly with Spotify on my Android phone. I am really excited to see what people could build with Muzik headphones. Feel free to take a look to the <a href="http://developer.muzikofficial.com/">Muzik SDK</a>.</p>
+
+<p>There are a lot more interesting startups in Miami, just scroll down the list on <a href="https://angel.co/miami">AngelList</a> and you will be amazed.</p>
+
+<p>In another article I will tell you more about the first <a href="http://mms.co">MIA Music Summit HackDay</a> that was sponsored by <a href="http://3scale.net">3scale</a>.</p>
+
+<p>Are you are building a startup in Miami? Tell me about it and I would love to take a look :)</p>
+
+<p>Thanks to <a href="http://twitter.com/kristine_hines">Kristine</a> my awesome coworker for proof reading this article :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Use Google Spreasheet and Firebase as Backend for Your Site]]></title>
@@ -1845,55 +1906,6 @@ Je très excité de vivre cette expérience :) C&#8217;est l&#8217;occasion de r
 
 
 <p>Pour bien préparer cet événement j&#8217;ai investi dans des cartes de visites, un <a href="http://pro.nicolasgrenie.com" hreflang="en">nouveau site profesionnel</a> etun  profil linkedin mis à jour, reste plus qu&#8217;à mettre tout ça en action ;-)</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Quelques Photos]]></title>
-    <link href="http://picsoung.github.io/blog/2010/11/02/quelques-photos/"/>
-    <updated>2010-11-02T22:40:00-07:00</updated>
-    <id>http://picsoung.github.io/blog/2010/11/02/quelques-photos</id>
-    <content type="html"><![CDATA[<p>Les différentes galeries&nbsp;:</p>
-
-
-
-
-<p><a href="http://picsoung.github.io/index.php?gallery/St.-Olaf-Sept/Oct-2010" hreflang="fr">Quelques photos du campus</a></p>
-
-
-
-
-<p><a href="http://picsoung.github.io/public/stolaf/DSC02063.JPG" title="DSC02063.JPG"><img src="http://picsoung.github.io/public/stolaf/.DSC02063_m.jpg" alt="DSC02063.JPG" style="float:left; margin: 0 1em 1em 0;" title="DSC02063.JPG, nov. 2010" /></a>
-À la fin on voit un peu l&#8217;automne, c&#8217;était vraiment magnifique&nbsp;!</p>
-
-
-
-
-<p><a href="http://picsoung.github.io/index.php?gallery/Minneapolis-Orientation-Week">Trip à Minneapolis pendant l&#8217;Orientation Week</a></p>
-
-
-
-
-<p><a href="http://picsoung.github.io/public/minneapolis/DSC01945.JPG" title="DSC01945.JPG"><img src="http://picsoung.github.io/public/minneapolis/.DSC01945_m.jpg" alt="DSC01945.JPG" style="float:left; margin: 0 1em 1em 0;" title="DSC01945.JPG, sept. 2010" /></a></p>
-
-
-
-
-<p><a href="http://picsoung.github.io/index.php?gallery/Minneapolis-Fall-Break">Trip à Minneapolis pendant Fall Break</a>
-<a href="http://picsoung.github.io/public/minneapolisFallBreak/DSC02100.JPG" title="DSC02100.JPG"><img src="http://picsoung.github.io/public/minneapolisFallBreak/.DSC02100_m.jpg" alt="DSC02100.JPG" style="float:right; margin: 0 0 1em 1em;" title="DSC02100.JPG, nov. 2010" /></a></p>
-
-
-
-
-<p><a href="http://picsoung.github.io/public/pumpkinfest/DSC02084.JPG" title="DSC02084.JPG"><img src="http://picsoung.github.io/public/pumpkinfest/.DSC02084_m.jpg" alt="DSC02084.JPG" style="float:left; margin: 0 1em 1em 0;" title="DSC02084.JPG, nov. 2010" /></a>
-<a href="http://picsoung.github.io/index.php?gallery/Pumpkin-Festival">Le festival des citrouilles organisé par les habitants de quartier où se trouve la maison</a></p>
-
-
-
-
-<p>Les <a href="http://picsoung.github.io/index.php?gallery/Defeat-of-Jesse-James-Days">photos du festival</a> Defeat of Jesse James Day dont j&#8217;avais parlé <a href="http://picsoung.github.io/index.php?post/American-dream-DJJD">ici</a>
-<a href="http://picsoung.github.io/public/jessejames/DSC02034.JPG" title="DSC02034.JPG"><img src="http://picsoung.github.io/public/jessejames/.DSC02034_m.jpg" alt="DSC02034.JPG" style="float:right; margin: 0 0 1em 1em;" title="DSC02034.JPG, oct. 2010" /></a></p>
 
 ]]></content>
   </entry>
