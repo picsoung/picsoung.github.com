@@ -3,7 +3,9 @@ layout: post
 title: "My tech spring break in Miami"
 date: 2014-04-03 10:51:13 -0700
 comments: true
-categories: 
+categories: startups,
+keywords: miami, startup, flomio, senzari, 3scale, API, musicgraph, musik
+description: startups that I met during spring break 2014 in Miami
 ---
 
 I might not be the typical college kid… For my first Spring Break in the US, 3 years ago while I was exchanging at St. Olaf College, I took all the money I could have spent on booze to go visit San Francisco. I took two weeks in SF to discover the tech scene. Instead of getting drunk and experiencing a part of American culture, I found an internship and stared my startup life.
@@ -14,7 +16,7 @@ If "Miami" and "startup" are words that you would not put together, you should d
 
 {% imgcap /images/miami-tech-spring-break/miami_landscape.jpg 355 200 The beach a block away from my hostel %}
 
-I want to take the opportunity with this blog post to showcase of the great startups I met there.
+I want to take the opportunity with this blog post to showcase some of the great startups I met there.
 
 ###Senzari
 {% img /images/miami-tech-spring-break/musicgraph_logo.png %}
