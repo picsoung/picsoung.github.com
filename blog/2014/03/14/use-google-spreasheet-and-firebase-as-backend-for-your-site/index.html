@@ -194,7 +194,7 @@ Mine looks like this <img class="left" src="/images/Zapier_step5.png" title="ima
 <p>Your test should pass and add a record to <a href="http://firebase.com">Firebase</a>. Check on the <a href="http://firebase.com">Firebase</a> forge to see if it worked.
 A common problem is that <a href="http://firebase.com">Firebase</a> does not like variable names with special character, and Google Spreadsheet column names are usually called <em>gsx$columnname</em>.</p>
 
-<p>One solution to that is to rename columns in the <em>Fields to store</em> part as described <a href="https://zapier.com/help/how-get-started-firebase/#common-problems-with-firebase">here</a></p>
+<p>One solution,is to rename columns in the <em>Fields to store</em> part as described <a href="https://zapier.com/help/how-get-started-firebase/#common-problems-with-firebase">here</a></p>
 
 <h2>Website setup</h2>
 
@@ -228,27 +228,27 @@ Include it in your project like you will do with any other javascript file.</p>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">&quot;talks-list-template&quot;</span> <span class="na">type=</span><span class="s">&quot;text/template&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>      <span class="p"></span>
-</span><span class='line'>          <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="o">&lt;</span><span class="nx">img</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette-image img-circle img-responsive pull-left&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width: 200px;height:200px;&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h3</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="p"></span>
-</span><span class='line'>                <span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-muted&quot;</span><span class="o">&gt;</span><span class="nx">by</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://twitter.com/&quot;</span><span class="o">&gt;</span><span class="p"></span><span class="o">&lt;</span><span class="err">/a&gt;&lt;/span&gt;</span>
+</span><span class='line'>      <span class="p">{{</span><span class="nx">talks</span><span class="p">}}</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;{{authorname}}&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">img</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;featurette-image img-circle img-responsive pull-left&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;{{imageurl}}&quot;</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width: 200px;height:200px;&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h3</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">title</span><span class="p">}}</span>
+</span><span class='line'>                <span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-muted&quot;</span><span class="o">&gt;</span><span class="nx">by</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://twitter.com/{{twitter}}&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">name</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/a&gt;&lt;/span&gt;</span>
 </span><span class='line'>            <span class="o">&lt;</span><span class="err">/h3&gt;</span>
 </span><span class='line'>            <span class="o">&lt;</span><span class="nx">p</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;lead&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>                <span class="p"></span>
+</span><span class='line'>                <span class="p">{{</span><span class="nx">description</span><span class="p">}}</span>
 </span><span class='line'>            <span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-info&quot;</span><span class="o">&gt;</span><span class="p"></span><span class="o">&lt;</span><span class="err">/span&gt;&lt;/h4&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-info&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">time</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/span&gt;&lt;/h4&gt;</span>
 </span><span class='line'>          <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>      <span class="p"></span>
+</span><span class='line'>      <span class="p">{{</span><span class="err">/talks}}</span>
 </span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>First line initiate a template named <code>talks-list-template</code></p>
 
-<p>the <code>..</code> block corresponds to a forEach loop on an array <code>talks</code>, in this block each call to another &#8220; THING will be related to the current object in the forEach loop.</p>
+<p>the  <code>{{talks}} ..{{/talks}}</code>  block corresponds to a forEach loop on an array <code>talks</code>, in this block each call to another &#8220; THING will be related to the current object in the forEach loop.</p>
 
-<p>For example, by calling <code>` we get the authorame of the current talk oject contained in</code>talks` array.</p>
+<p>For example, by calling  <code>{{authorname}}</code>  we get the authorame of the current talk oject contained in <code>talks</code> array.</p>
 
 <p>Now we have to pass to this template the corresponding <code>talks</code> object.</p>
 
