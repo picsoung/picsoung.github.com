@@ -81,7 +81,7 @@ Mine looks like this {% img left /images/Zapier_step5.png 'image' 'images' %}
 Your test should pass and add a record to [Firebase](http://firebase.com). Check on the [Firebase](http://firebase.com) forge to see if it worked.
 A common problem is that [Firebase](http://firebase.com) does not like variable names with special character, and Google Spreadsheet column names are usually called *gsx$columnname*.
 
-One solution to that is to rename columns in the *Fields to store* part as described [here](https://zapier.com/help/how-get-started-firebase/#common-problems-with-firebase) 
+One solution,is to rename columns in the *Fields to store* part as described [here](https://zapier.com/help/how-get-started-firebase/#common-problems-with-firebase) 
 
 ## Website setup
 Now that our data are stored on [Firebase](http://firebase.com), we need to get them and display them on the page.
@@ -98,8 +98,8 @@ Somewhere in your page, where you want to display submissions add this piece of 
 
 Then add the end of the file add :
 
+{% raw %}
 ```html
-
 <script id="talks-list-template" type="text/template">
       {{talks}}
           <div class="featurette" id="{{authorname}}">
@@ -115,12 +115,13 @@ Then add the end of the file add :
       {{/talks}}
     </script>
 ```
+{% endraw %}
 
 First line initiate a template named `talks-list-template`
 
-the `{{talks}} ..{{/talks}}` block corresponds to a forEach loop on an array `talks`, in this block each call to another `{{}}` THING will be related to the current object in the forEach loop.
+the {% raw %} `{{talks}} ..{{/talks}}` {% endraw %} block corresponds to a forEach loop on an array `talks`, in this block each call to another `{{}}` THING will be related to the current object in the forEach loop.
 
-For example, by calling `{{authorname}}` we get the authorame of the current talk oject contained in `talks` array.
+For example, by calling {% raw %} `{{authorname}}` {% endraw %} we get the authorame of the current talk oject contained in `talks` array.
 
 Now we have to pass to this template the corresponding `talks` object.
 
